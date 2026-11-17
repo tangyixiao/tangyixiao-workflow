@@ -1,0 +1,7 @@
+{
+  "format": "tangyixiao-zh-v1",
+  "releases": [
+    { "file": "zcode-0.6.3.md", "title": "ZCode Plan Bridge v0.6.3" },
+    { "file": "zcode-0.5.1.md", "title": "ZCode Plan Bridge v0.5.1" }
+  ]
+}

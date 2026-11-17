@@ -63,10 +63,12 @@ Public notes explain changes, user impact, installation/upgrade, required
 compatibility, and material known limitations. A plugin user does not need an
 agent's handoff or acceptance transcript.
 
-- Do not repeat the release title as a body H1. Use clear headings, short bullets,
-  an installation code fence where useful, and a separate known-limits section.
-- Write one complete primary language. Put a full translation in a separate
-  section, disclosure block, or linked document; avoid phrase-by-phrase mixed prose.
+- Follow the single [release-note format reference](release-format.md). Bind
+  `release.notesFormat` to the product's chosen language profile and keep it across
+  releases; do not temporarily rename headings, installation labels, or the folded
+  evidence summary. Do not repeat the Release page title in the body.
+- Use the profile's complete primary language. Put a complete translation in a
+  separate linked document with its corresponding profile, not alternating fragments.
 - Keep real boundaries that affect use: host/runtime requirements, missing
   preview features, unsupported platforms, and genuinely unverified live flows.
   Do not remove them mechanically to make a release sound finished.
@@ -83,9 +85,11 @@ agent's handoff or acceptance transcript.
   necessary. Normal product users and authorization mechanisms remain valid terms.
 - Include implementation detail only when it explains a user-visible effect,
   migration requirement, or compatibility constraint.
+- Include only genuine installation routes for that release. Do not invent an
+  npm/Web command or unsupported platform entry merely to match another version.
 
-Run `notes-check --notes NOTES.md --title "Product v1.2.3"` for structural and
-obvious narrative problems. It is a limited editorial check, not a translation,
+Run `notes-check --notes NOTES.md --title "Product v1.2.3" --format PROFILE_ID`
+for the selected format and obvious narrative problems. It is a limited check, not a translation,
 fact checker, license review, or proof of behavior. Review meaning against actual
 source and assets. Editorial cleanup does not authorize publication or changes to
 historical tags, assets, or dist-tags.

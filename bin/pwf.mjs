@@ -22,7 +22,7 @@ Usage: node bin/pwf.mjs <command> [options]
   status       --destination <skill-directory>       inspect installed skill hashes
   uninstall    --destination <skill-directory> [--apply]
   release-check --project <directory> --candidate <json> [--config <json>]
-  notes-check  --notes <markdown> --title <release-title> check public/private publishing boundaries
+  notes-check  --notes <markdown> --title <release-title> [--format tangyixiao-zh-v1|tangyixiao-en-v1]
   finish       --project <directory> [--task <id>]    report registered resources; no deletion
   resource-add --project <directory> --task <id> --path <relative> --purpose <text> [--disposable] [--apply]
   self-check                                         validate toolkit source and linked references
@@ -34,7 +34,7 @@ registry publisher or automatic scratch deletion. Node >=22 is required.
 function parse(args) {
   const command = args.shift() ?? 'help'
   const booleans = new Set(['apply', 'json', 'disposable', 'accept-config'])
-  const values = new Set(['project', 'repository', 'profile', 'destination', 'candidate', 'config', 'task', 'path', 'purpose', 'notes', 'title'])
+  const values = new Set(['project', 'repository', 'profile', 'destination', 'candidate', 'config', 'task', 'path', 'purpose', 'notes', 'title', 'format'])
   const options = {}
   while (args.length) {
     const token = args.shift()
@@ -76,8 +76,15 @@ async function selfCheck() {
       }
     }
   }
+  const examples = JSON.parse(await readFile(path.join(root,'examples/release-notes/format.json'),'utf8'))
+  for (const example of examples.releases) {
+    if (!/^[a-z0-9.-]+\.md$/.test(example.file)) throw new Error('Unsafe release example filename')
+    const notes = await readFile(path.join(root,'examples/release-notes',example.file),'utf8')
+    const result = reviewReleaseNotes({notes,title:example.title,format:examples.format})
+    if (!result.ok) throw new Error(`${example.file}: ${result.checks.filter(check => !check.ok).map(check => check.message).join('; ')}`)
+  }
   if (manifest.dependencies && Object.keys(manifest.dependencies).length) throw new Error('Unexpected runtime dependencies')
-  return { ok: true, version: manifest.version, localReferences: references.length, runtimeDependencies: 0, scope: 'toolkit-source-only' }
+  return { ok: true, version: manifest.version, localReferences: references.length, releaseExamples:examples.releases.length, releaseNotesFormat:examples.format, runtimeDependencies: 0, scope: 'toolkit-source-only' }
 }
 
 async function main() {
@@ -87,7 +94,7 @@ async function main() {
   const allowed = {
     doctor: ['project'], adopt: ['project','repository','profile','apply','accept-config'], upgrade: ['project','apply','accept-config'], check: ['project'],
     install: ['destination','apply'], status: ['destination'], uninstall: ['destination','apply'],
-    'release-check': ['project','candidate','config'], 'notes-check':['notes','title'], finish: ['project','task'],
+    'release-check': ['project','candidate','config'], 'notes-check':['notes','title','format'], finish: ['project','task'],
     'resource-add': ['project','task','path','purpose','disposable','apply'], 'self-check': []
   }
   if (!(command in allowed)) throw new Error(`Unknown command: ${command}`)
@@ -110,7 +117,7 @@ async function main() {
   else if (command === 'notes-check') {
     const content = await readLocalFile(path.resolve(requireOption(options,'notes')))
     if (content === null) throw new Error('Notes file does not exist')
-    result = reviewReleaseNotes({ notes:new TextDecoder('utf-8',{fatal:true}).decode(content), title:requireOption(options,'title') })
+    result = reviewReleaseNotes({ notes:new TextDecoder('utf-8',{fatal:true}).decode(content), title:requireOption(options,'title'), format:options.format })
   }
   else if (command === 'finish') result = await finishResources({ projectRoot, task:options.task })
   else if (command === 'resource-add') result = await registerResource({ projectRoot, task:requireOption(options,'task'), resourcePath:requireOption(options,'path'), purpose:requireOption(options,'purpose'), disposable:options.disposable ?? false, apply:options.apply })

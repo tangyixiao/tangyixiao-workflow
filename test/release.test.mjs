@@ -483,3 +483,13 @@ test('does not accept untracked manifest or lockfile bytes as evidence of the ta
   failed(result, 'manifest.source');
   failed(result, 'lockfile.source');
 });
+
+test('the declared product note format is enforced by the release gate', async t => {
+  const f = await fixture(t);
+  assert.equal((await f.check()).ok, true);
+  f.config.release.notesFormat = 'tangyixiao-zh-v1';
+  await f.save();
+  const result = await f.check();
+  failed(result, 'format.headings');
+  failed(result, 'format.evidence');
+});

@@ -91,13 +91,16 @@ candidate first; the checker does not infer a package's product or channel.
 
 ```sh
 node bin/pwf.mjs release-check --project /path/to/project --candidate /path/to/candidate.json
-node bin/pwf.mjs notes-check --notes /path/to/notes.md --title "Product v1.2.3"
+node bin/pwf.mjs notes-check --notes /path/to/notes.md --title "Product v1.2.3" --format tangyixiao-zh-v1
 node bin/pwf.mjs finish --project /path/to/project
 ```
 
 The release checker consumes local metadata and declared files; it is not a
 publisher or archive inspector. The notes checker catches structural/narrative
-problems, not unsupported feature claims. The finish command reports registered
+problems, not unsupported feature claims. Use the same `--format` for the same
+product, or bind it with `release.notesFormat` so `release-check` enforces it.
+The source's release examples are checked against their shared format in CI.
+The finish command reports registered
 resources and a cleanup plan; it does not delete files or stop processes. Read the
 Skill's release/resources references before using those modes.
 
