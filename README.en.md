@@ -80,3 +80,7 @@ all agents automatically.
 
 Code and original documentation use [Apache-2.0](LICENSE); see [NOTICE](NOTICE).
 Referenced projects and third-party material retain their own rights and attribution.
+
+## Project website
+
+Download or clone this repository, then open the [English homepage](project-website/site/en/index.html) or [中文首页](project-website/site/index.html) in your browser. Both versions work offline.

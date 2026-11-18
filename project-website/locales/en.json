@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "description": "The development version pairs an installable skill with a local CLI and project configuration. Preview a change plan before choosing which changes to apply."
+  },
+  "pages": {
+    "home": {
+      "title": "Bring a checkable workflow to an existing project · {project}"
+    },
+    "features": {
+      "title": "Features · {project}",
+      "description": "The development version pairs an installable skill with a local CLI and project configuration. Preview a change plan before choosing which changes to apply."
+    },
+    "download": {
+      "title": "Get started · {project}",
+      "description": "The implementation is on feat/installable-workflow and requires Node.js 22 or newer."
+    },
+    "community": {
+      "title": "Community · {project}",
+      "description": "Find usage guidance, follow discussions and review changes to this project."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "download": "Get started",
+    "community": "Community"
+  },
+  "ui": {
+    "skip_link": "Skip to main content",
+    "navigation": "Main navigation",
+    "open_navigation": "Open navigation",
+    "close_navigation": "Close navigation",
+    "language": "Choose language",
+    "theme": "Choose theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "platforms": "Supported platforms",
+    "github": "GitHub",
+    "view_image": "View full illustration",
+    "feature_more": "Explore features",
+    "download": "Read the development guide",
+    "release_notes": "Source repository",
+    "documentation": "Documentation",
+    "source": "Source repository",
+    "illustration": "First steps",
+    "license": "Apache-2.0"
+  },
+  "hero": {
+    "title": [
+      "Bring a checkable workflow to an existing project"
+    ],
+    "description": [
+      "The development version pairs an installable skill with a local CLI and project configuration. Preview a change plan before choosing which changes to apply."
+    ],
+    "primary_action": "Read the development guide",
+    "secondary_action": "Explore features"
+  },
+  "preview": {
+    "caption": "First steps",
+    "tabs": [
+      {
+        "label": "Get started",
+        "icon": "book"
+      }
+    ],
+    "items": [
+      {
+        "title": "Read the development guide",
+        "description": "The implementation is on feat/installable-workflow and requires Node.js 22 or newer.",
+        "icon": "book"
+      },
+      {
+        "title": "Check the environment",
+        "description": "Run node bin/pwf.mjs doctor in the development checkout, then inspect the installation plan in the guide.",
+        "icon": "link"
+      }
+    ]
+  },
+  "features": {
+    "title": "Project features",
+    "groups": [
+      {
+        "title": "Preview adoption",
+        "description": "The adopt command prepares a plan for the chosen project profile. Use check afterwards to inspect managed content.",
+        "detail": "",
+        "icon": "layers"
+      },
+      {
+        "title": "Choose guidance for the task",
+        "description": "Read targeted references for design, websites, releases and resource cleanup. Run the CLI directly from the development branch.",
+        "detail": "",
+        "icon": "book"
+      }
+    ]
+  },
+  "getting_started": {
+    "title": "Get started · {project}",
+    "steps": [
+      {
+        "title": "Read the development guide",
+        "description": "The implementation is on feat/installable-workflow and requires Node.js 22 or newer.",
+        "icon": "book"
+      },
+      {
+        "title": "Check the environment",
+        "description": "Run node bin/pwf.mjs doctor in the development checkout, then inspect the installation plan in the guide.",
+        "icon": "link"
+      }
+    ]
+  },
+  "community": {
+    "title": "Community · {project}",
+    "description": "Find usage guidance, follow discussions and review changes to this project.",
+    "links": [
+      {
+        "label": "Help and feedback",
+        "description": "Browse existing reports or describe a reproducible problem.",
+        "icon": "book"
+      },
+      {
+        "label": "Source repository",
+        "description": "Find the project and its maintenance links.",
+        "icon": "link"
+      },
+      {
+        "label": "Review changes",
+        "description": "Review open pull requests or prepare a contribution.",
+        "icon": "code"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "{copyright}"
+  }
+}
