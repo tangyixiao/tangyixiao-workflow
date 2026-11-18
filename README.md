@@ -56,3 +56,7 @@ Skill 负责发现和调用，项目配置负责跨会话留存，核心仓库�
 精选 README／网站快照、原规范来源和发行正文修订案例见[来源说明](docs/provenance.md)。账户级 `.github` 社区默认文件仍单独维护；这里不会自动控制所有 agent，也没有后台守护程序。
 
 代码和原创文档采用 [Apache-2.0](LICENSE)，见 [NOTICE](NOTICE)。引用项目和第三方素材保留各自权利与来源说明。
+
+## 项目网站
+
+下载或克隆仓库后，用浏览器打开[中文首页](project-website/site/index.html)或 [English homepage](project-website/site/en/index.html)。两个版本都可以离线阅读。
