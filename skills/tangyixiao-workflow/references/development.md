@@ -16,6 +16,8 @@
 
 分支名描述这次交付。Codex、Claude、其他 agent 和人工贡献都先看目标项目的约定；工具身份本身不决定前缀。仓库或宿主明确要求命名空间时，在其中保留有意义的任务名，例如 `codex/fix-import-path`。也可按项目习惯使用议题编号或短横线，例如 `142-fix-import-path`。已有合适分支继续使用。
 
+合并前对高影响改动做[独立审查与交叉核验](independent-review.md)。报告的疑点要核对到实际代码、前提与证据，再决定修复、继续查证或驳回。
+
 ## 合并后清理任务分支
 
 1. **核对合并证据。** 更新目标基分支的信息，分别读取本地分支和远端源分支当前的完整提交哈希。普通合并可用 `git merge-base --is-ancestor <tip> <base>` 核验该提交已进入目标基线。Squash 或 rebase 合并会改变提交身份，此时核对同一源仓库、源分支、目标仓库和基分支的已合并 PR，将待清理分支的 tip 与 PR **合并时**的 head 哈希比对，并确认合并结果已进入目标基线。若分支后来又有提交，保留它。[GitHub 合并方式](https://docs.github.com/en/pull-requests/reference/pull-request-merges)
