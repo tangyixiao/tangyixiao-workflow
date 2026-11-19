@@ -7,7 +7,7 @@ import path from 'node:path'
 import { DEFAULT_RESOURCES, inspectProject, checkProject, adoptProject, upgradeProject, readLocalFile } from '../lib/project.mjs'
 import { installSkill, uninstallSkill, skillStatus } from '../lib/install.mjs'
 import { checkRelease } from '../lib/release.mjs'
-import { finishResources, registerResource } from '../lib/resources.mjs'
+import { finishResources, registerResource, unregisterResource } from '../lib/resources.mjs'
 import { reviewReleaseNotes } from '../lib/notes.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -26,6 +26,7 @@ Usage: node bin/pwf.mjs <command> [options]
   notes-check  --notes <markdown> --title <release-title> [--format tangyixiao-zh-v1|tangyixiao-en-v1]
   finish       --project <directory> [--task <id>]    report registered resources; no deletion
   resource-add --project <directory> --task <id> --path <relative> --purpose <text> [--disposable] [--apply]
+  resource-remove --project <directory> --task <id> --path <relative> [--apply]    retire a missing path from the ledger
   self-check                                         validate toolkit source and linked references
 
 All commands accept --json. Mutation defaults to a plan. This alpha has no daemon,
@@ -96,7 +97,8 @@ async function main() {
     doctor: ['project'], adopt: ['project','repository','profile','apply','accept-config'], upgrade: ['project','apply','accept-config'], check: ['project'],
     install: ['destination','apply'], status: ['destination'], uninstall: ['destination','apply'],
     'release-check': ['project','candidate','config'], 'notes-check':['notes','title','format'], finish: ['project','task'],
-    'resource-add': ['project','task','path','purpose','disposable','apply'], 'self-check': []
+    'resource-add': ['project','task','path','purpose','disposable','apply'],
+    'resource-remove': ['project','task','path','apply'], 'self-check': []
   }
   if (!(command in allowed)) throw new Error(`Unknown command: ${command}`)
   for (const key of Object.keys(options)) if (key !== 'json' && !allowed[command].includes(key)) throw new Error(`--${key} does not apply to ${command}`)
@@ -134,6 +136,7 @@ async function main() {
   }
   else if (command === 'finish') result = await finishResources({ projectRoot, task:options.task })
   else if (command === 'resource-add') result = await registerResource({ projectRoot, task:requireOption(options,'task'), resourcePath:requireOption(options,'path'), purpose:requireOption(options,'purpose'), disposable:options.disposable ?? false, apply:options.apply })
+  else if (command === 'resource-remove') result = await unregisterResource({ projectRoot, task:requireOption(options,'task'), resourcePath:requireOption(options,'path'), apply:options.apply })
   else result = await selfCheck()
   if (options.json) console.log(JSON.stringify(result, null, 2))
   else {

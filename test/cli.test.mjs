@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
-import { mkdtemp, mkdir, writeFile, rm, realpath, lstat } from 'node:fs/promises'
+import { mkdtemp, mkdir, writeFile, rm, unlink, realpath, lstat } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import { DEFAULT_RESOURCES } from '../lib/project.mjs'
@@ -45,6 +45,24 @@ test('CLI checks a plain project without pretending adoption is complete', async
   const result = run(['check','--project',root,'--json'])
   assert.equal(result.status,1)
   assert.equal(JSON.parse(result.stdout).ok,false)
+})
+
+test('the resource-remove CLI previews retirement and only unregisters a missing path on apply', async t => {
+  const root = await temporaryProject(t)
+  const relative = 'work/project-workflow/build/preview.log'
+  const absolute = path.join(root, relative)
+  await mkdir(path.dirname(absolute), {recursive:true})
+  await writeFile(absolute, 'done')
+  const options = ['--project',root,'--task','build','--path',relative,'--json']
+  const list = () => JSON.parse(run(['finish','--project',root,'--json']).stdout).entries
+  assert.equal(run(['resource-add',...options,'--purpose','preview','--apply']).status,0)
+  assert.equal(run(['resource-remove',...options,'--apply']).status,1)
+  assert.equal((await lstat(absolute)).isFile(),true)
+  await unlink(absolute)
+  assert.equal(run(['resource-remove',...options]).status,0)
+  assert.equal(list()[0].state,'absent')
+  assert.equal(run(['resource-remove',...options,'--apply']).status,0)
+  assert.deepEqual(list(),[])
 })
 
 test('doctor reports host capacity and applies the target project disk reserve', async t => {
