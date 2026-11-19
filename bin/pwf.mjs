@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { readFile, readdir, lstat, statfs } from 'node:fs/promises'
 import { execFileSync } from 'node:child_process'
+import { availableParallelism, freemem, totalmem } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
-import { inspectProject, checkProject, adoptProject, upgradeProject, readLocalFile } from '../lib/project.mjs'
+import { DEFAULT_RESOURCES, inspectProject, checkProject, adoptProject, upgradeProject, readLocalFile } from '../lib/project.mjs'
 import { installSkill, uninstallSkill, skillStatus } from '../lib/install.mjs'
 import { checkRelease } from '../lib/release.mjs'
 import { finishResources, registerResource } from '../lib/resources.mjs'
@@ -104,9 +105,21 @@ async function main() {
   if (command === 'doctor') {
     let git
     try { git = execFileSync('git', ['--version'], { encoding:'utf8', stdio:['ignore','pipe','ignore'], timeout:5000 }).trim() } catch { git = null }
-    const disk = await statfs(projectRoot)
+    const project = await inspectProject(projectRoot)
+    const disk = await statfs(project.projectRoot)
     const freeBytes = Number(disk.bavail) * Number(disk.bsize)
-    result = { ok: Number(process.versions.node.split('.')[0]) >= 22 && git !== null, version:manifest.version, node:process.version, git, freeBytes, reserveBytes:10 * 1024 ** 3, diskReserveMet:freeBytes >= 10 * 1024 ** 3, project:await inspectProject(projectRoot), scope:'local-read-only', clientActivation:'not-verified' }
+    const reserveGiB = project.configuration?.resources?.freeSpaceReserveGiB
+    const validReserve = project.configuration?.schema === 1 && Number.isFinite(reserveGiB)
+      && reserveGiB >= 0 && Number.isFinite(reserveGiB * 1024 ** 3)
+    const reserveBytes = (validReserve ? reserveGiB : DEFAULT_RESOURCES.freeSpaceReserveGiB) * 1024 ** 3
+    result = {
+      ok: Number(process.versions.node.split('.')[0]) >= 22 && git !== null,
+      version: manifest.version, node: process.version, git,
+      availableParallelism: availableParallelism(), freeMemoryBytes: freemem(), totalMemoryBytes: totalmem(),
+      freeBytes, reserveBytes, diskReserveMet: freeBytes >= reserveBytes,
+      gpu: { utilizationPercent: null, freeVramBytes: null, note: 'Not measured. For GPU work, check the device monitor or an installed tool such as nvidia-smi on NVIDIA systems.' },
+      project, scope: 'local-read-only', clientActivation: 'not-verified'
+    }
   } else if (command === 'adopt') result = await adoptProject({ projectRoot, repository:requireOption(options,'repository'), profile:options.profile, apply:options.apply, acceptConfig:options['accept-config'] })
   else if (command === 'upgrade') result = await upgradeProject({ projectRoot, apply:options.apply, acceptConfig:options['accept-config'] })
   else if (command === 'check') result = await checkProject(projectRoot)

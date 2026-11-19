@@ -13,6 +13,13 @@ node bin/pwf.mjs --help
 node bin/pwf.mjs doctor
 ```
 
+Before a heavy job, run `doctor --project <directory>` against its working
+volume and compare the snapshot with the [expected peak for the task](../skills/tangyixiao-workflow/references/resources.md).
+For a GPU job, also inspect free memory on the device the job will use.
+The [development guide](../skills/tangyixiao-workflow/references/development.md)
+explains when to reuse an existing implementation or branch, how to name a new
+branch, and when to retire it after merge.
+
 For PowerShell:
 
 ```powershell

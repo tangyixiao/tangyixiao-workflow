@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { mkdtemp, mkdir, writeFile, rm, realpath, lstat } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
+import { DEFAULT_RESOURCES } from '../lib/project.mjs'
 
 const cli = fileURLToPath(new URL('../bin/pwf.mjs',import.meta.url))
 function run(args) { return spawnSync(process.execPath,[cli,...args],{encoding:'utf8',timeout:10000}) }
@@ -26,7 +27,7 @@ test('CLI provides a usable discoverable entry and structured errors', () => {
   assert.equal(JSON.parse(missing.stderr).error,'--candidate is required')
 })
 
-test('CLI checks a plain project without pretending adoption is complete', async t => {
+async function temporaryProject(t) {
   const base = await realpath(os.tmpdir())
   const root = await mkdtemp(path.join(base,'tywf-cli-'))
   t.after(async () => {
@@ -35,8 +36,39 @@ test('CLI checks a plain project without pretending adoption is complete', async
     await rm(root,{recursive:true,force:true})
   })
   await mkdir(path.join(root,'.github'))
+  return root
+}
+
+test('CLI checks a plain project without pretending adoption is complete', async t => {
+  const root = await temporaryProject(t)
   await writeFile(path.join(root,'package.json'),JSON.stringify({name:'sample-project',version:'1.0.0'}))
   const result = run(['check','--project',root,'--json'])
   assert.equal(result.status,1)
   assert.equal(JSON.parse(result.stdout).ok,false)
+})
+
+test('doctor reports host capacity and applies the target project disk reserve', async t => {
+  const root = await temporaryProject(t)
+  const readDoctor = () => {
+    const result = run(['doctor','--project',root,'--json'])
+    assert.equal(result.status,0,result.stderr)
+    return JSON.parse(result.stdout)
+  }
+  const report = readDoctor()
+  const defaultBytes = DEFAULT_RESOURCES.freeSpaceReserveGiB * 1024 ** 3
+  assert.equal(report.project.projectRoot,root)
+  assert.equal(report.reserveBytes,defaultBytes)
+  assert(Number.isInteger(report.freeBytes) && report.freeBytes >= 0)
+  assert.equal(report.diskReserveMet,report.freeBytes >= defaultBytes)
+  assert(Number.isInteger(report.availableParallelism) && report.availableParallelism >= 1)
+  assert(report.totalMemoryBytes > 0 && report.freeMemoryBytes >= 0 && report.freeMemoryBytes <= report.totalMemoryBytes)
+  assert.equal(report.gpu.utilizationPercent,null)
+  assert.equal(report.gpu.freeVramBytes,null)
+
+  for (const [reserveGiB,expectedBytes] of [[0,0],[0.5,2 ** 29],['1',defaultBytes]]) {
+    await writeFile(path.join(root,'.github','project-workflow.json'),JSON.stringify({schema:1,resources:{freeSpaceReserveGiB:reserveGiB}}))
+    const configured = readDoctor()
+    assert.equal(configured.reserveBytes,expectedBytes)
+    assert.equal(configured.diskReserveMet,configured.freeBytes >= expectedBytes)
+  }
 })

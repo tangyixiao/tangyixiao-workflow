@@ -1,6 +1,6 @@
 ---
 name: tangyixiao-workflow
-description: Write or review public repository content, including README, About, Wiki, Actions output, commits, pull requests, issues, discussions and releases in any project. Also supports project setup, website delivery, demo videos, resource closeout and local release checks.
+description: Write or review README, About, Wiki, Actions output, commits, PRs, issues, discussions and releases in any repository. Reuse development tools, choose and retire branches, estimate resources before heavy jobs, and clean up after delivery. Also supports project setup, websites, demo videos and local release checks.
 ---
 
 # Tangyixiao Workflow
@@ -9,6 +9,15 @@ Use this skill to turn a project workflow into a scoped plan, useful changes, an
 evidence of the result. Preserve the receiving project's identity, existing work,
 license, and explicit instructions. A sample project is not the identity of every
 project that adopts it.
+
+Before building a tool or feature, find the implementation this project already
+uses. Check existing issues, PRs, dependencies, standard tools and maintained
+upstream options as appropriate. Use or adapt a suitable one. For a custom
+implementation, record the specific gap in the existing issue, PR or task note.
+Use [development guidance](references/development.md) to choose the branch,
+base, name and post-merge disposition. For a heavy job, use the
+[resource guide](references/resources.md) to compare estimated peak demand
+with available capacity before starting it.
 
 ## Locate the executable
 
@@ -41,7 +50,7 @@ every reference for a small request.
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
 | Repository operations, bots, labels, SEO, distribution | [Operations](references/operations.md) | Adoption/configuration checks; platform settings require separate verification |
 | Product identity, version, channel, candidate assets, public notes | [Release](references/release.md) | Offline `release-check` and editorial `notes-check` |
-| Scratch ownership, disk use, task completion | [Resources](references/resources.md) | Registration and read-only `finish` plan; no automatic deletion |
+| Resource estimates and task closeout | [Resources](references/resources.md) | `doctor` reports host capacity. `finish` inspects registered scratch. |
 | Product demonstration or distribution video | [Video](references/video.md) | Guidance; no bundled recorder or renderer |
 
 For adoption, inspect the current checkout, dirty work, existing instructions,
@@ -62,9 +71,10 @@ plan. Choose only applicable modules rather than filling every platform feature.
   not run a project's tests, certify its design, or verify GitHub settings.
 - A release candidate must identify its actual product. Do not rewrite separate
   historical products into one lineage because their repository now has a new name.
-- `finish --project` reports owned scratch and a cleanup plan. It does not stop
-  processes or delete paths. Inspect active consumers and recovery needs before
-  any separately authorized manual cleanup.
+- Use `finish --project` to inspect registered scratch. As part of closing the
+  task, reconcile other owned paths and processes, verify what can be removed,
+  carry out routine cleanup using the host's supported operations, and check the
+  result. After a merge, check whether the task branch and worktree can retire.
 
 ## Leave a usable result
 
