@@ -79,7 +79,9 @@ Notes must be nonempty, identify the version and contain the configured installa
 
 ## Paths and execution boundary
 
-The default config path and relative explicit paths resolve from the project. Explicit absolute `configPath` and `candidatePath` may be outside the project, enabling a read-only audit from a separate suite checkout. Their files and every parent component must still be free of symbolic links or junctions. Asset, manifest and configured lockfile paths always remain project-local. Windows alternate data streams, traversal components and symbolic links are rejected. JSON metadata is limited to 1 MiB per file, parsed as data, and never evaluated.
+When using the CLI, a relative `--candidate` is resolved from the directory where you run the command. A relative `--config` is resolved from the project selected by `--project`. When checking another checkout, pass an absolute candidate path to identify the intended file. Direct calls to the JavaScript `checkRelease` function resolve both relative arguments from `projectRoot`.
+
+The default configuration is the project's `.github/project-workflow.json`. Explicit absolute configuration and candidate paths may be outside the project. Their files and parents must be free of symbolic links or junctions. Asset, manifest and configured lockfile paths stay inside the project. JSON inputs are limited to 1 MiB per file.
 
 Files are checked before opening, after opening and after hashing. Where supported, file opens also use `O_NOFOLLOW`. These checks prevent normal symlink/path escapes and detect common file replacement races; they are not an OS sandbox against an attacker who can continuously mutate the filesystem concurrently. Use a stable, trusted checkout during acceptance.
 
