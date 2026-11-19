@@ -22,5 +22,20 @@ jobs:
           sparse-checkout: project-website
       - name: Check rendered pages, local links and translations
         run: python3 project-website/scripts/check.py
-      - name: Exercise desktop and mobile in the runner browser
-        run: python3 project-website/scripts/smoke_browser.py project-website
+      - name: Ensure the browser can render Chinese copy
+        run: |
+          if [[ -z "$(fc-list :lang=zh-cn family)" ]]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends fonts-wqy-microhei
+          fi
+          test -n "$(fc-list :lang=zh-cn family)"
+      - name: Check keyboard, language and theme controls at responsive widths
+        run: python3 project-website/scripts/smoke_browser.py project-website --screenshots "${RUNNER_TEMP}/website-review" --round after
+      - name: Save browser screenshots for visual review
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: website-screenshots
+          path: ${{ runner.temp }}/website-review
+          if-no-files-found: error
+          retention-days: 3
+          overwrite: true
