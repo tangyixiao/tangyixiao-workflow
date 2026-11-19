@@ -19,13 +19,18 @@
   "license_label": "Apache-2.0",
   "links": {
     "repository": "https://github.com/tangyixiao/tangyixiao-workflow",
-    "download": "https://github.com/tangyixiao/tangyixiao-workflow/blob/feat/installable-workflow/docs/getting-started.md",
-    "documentation": "https://github.com/tangyixiao/tangyixiao-workflow/blob/feat/installable-workflow/README.md",
+    "download": "https://github.com/tangyixiao/tangyixiao-workflow/blob/main/docs/getting-started.md",
+    "documentation": "https://github.com/tangyixiao/tangyixiao-workflow/blob/main/README.md",
     "release": "https://github.com/tangyixiao/tangyixiao-workflow",
     "license": "https://github.com/tangyixiao/tangyixiao-workflow/blob/main/LICENSE",
     "report_issue": "https://github.com/tangyixiao/tangyixiao-workflow/issues",
-    "suggest_feature": "https://github.com/tangyixiao/tangyixiao-workflow",
+    "suggest_feature": "https://github.com/tangyixiao/tangyixiao-workflow/issues/new",
     "contribute": "https://github.com/tangyixiao/tangyixiao-workflow/pulls"
+  },
+  "localized_links": {
+    "en": {
+      "documentation": "https://github.com/tangyixiao/tangyixiao-workflow/blob/main/README.en.md"
+    }
   },
   "copyright_notice": "Website template © 2026 Tang Yixiao and contributors"
 }

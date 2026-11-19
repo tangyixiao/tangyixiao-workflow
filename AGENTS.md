@@ -26,8 +26,7 @@ respect rejected deletion operations.
 
 New websites and substantial redesigns require real references, a desktop/mobile
 visual overview and explicit human selection before implementation. Routine fixes
-inside an approved direction continue without another approval cycle. This alpha
-adds no new website or visual redesign. Public prose describes product facts and
+inside an approved direction continue without another approval cycle. The bilingual website lives in `project-website/`. Public prose describes product facts and
 verified behavior, with no private chat narratives or invented progress.
 
 <!-- BEGIN PROJECT-WORKFLOW MANAGED -->
