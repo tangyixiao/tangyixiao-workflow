@@ -22,6 +22,11 @@ ICONS = {
     "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/>',
     "moon": '<path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/>',
     "monitor": '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M12 17v4m-5 0h10"/>',
+    "paper": '<path d="M5 2h10l4 4v16H5zM14 2v5h5M8 11h8M8 15h8"/>',
+    "check": '<path d="m4.5 12 5 5 10-11"/>',
+    "copy": '<rect x="8" y="7" width="12" height="14" rx="2"/><path d="M16 7V3H4v14h4"/>',
+    "terminal": '<rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 8 4 4-4 4m7 0h4"/>',
+    "close": '<path d="m5 5 14 14M19 5 5 19"/>',
 }
 
 
@@ -265,22 +270,6 @@ def _href(value, prefix):
     return _escape(prefix + value.removeprefix("./"))
 
 
-def _product_preview(c, t, prefix):
-    preview = t["preview"]
-    capture = c.get("preview", {}).get("image")
-    if capture is not None:
-        data = _object(preview.get("image"), "preview.image translations")
-        return (f'<a href="{_href(capture["src"], prefix)}"><img class="product-image" src="{_href(capture["src"], prefix)}" alt="{_escape(data["alt"])}"></a>'
-                f'<figcaption>{_escape(data["caption"])}</figcaption>')
-    steps = "".join(
-        f'<li><a href="./download.html#instructions"><strong>{_escape(item["title"])}</strong>'
-        f'<span>{_escape(item["description"])}</span></a></li>'
-        for item in preview["items"]
-    )
-    return (f'<div class="guide-card"><h2>{_escape(preview["caption"])}</h2>'
-            f'<ol>{steps}</ol></div>')
-
-
 def _platforms(c, t, prefix):
     if not c.get("platforms"):
         return ""
@@ -316,19 +305,6 @@ def _feature(group, t, prefix):
 
 def _body(c, t, page, prefix):
     ui, links = t["ui"], c["links"]
-    if page == "home":
-        hero = t["hero"]
-        teasers = "".join(f'<article class="feature-teaser {"teaser-code" if i % 2 == 0 else "teaser-training"}">'
-                          f'<header>{_svg(group["icon"])}<h2>{_escape(group["title"])}</h2></header><p>{_escape(group["description"])}</p>'
-                          f'<a class="feature-more" href="./features.html">{_escape(ui["feature_more"])} <span aria-hidden="true">→</span></a></article>'
-                          for i, group in enumerate(t["features"]["groups"]))
-        return (f'<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">'
-                + '<br>'.join(_escape(line) for line in hero["title"]) + '</h1><div class="hero-description">'
-                + ''.join(f'<p>{_escape(p)}</p>' for p in hero["description"]) + '</div>' + _platforms(c, t, prefix)
-                + f'<div class="hero-actions"><a class="button button-primary" href="{_href(links["download"], prefix)}">{_escape(hero["primary_action"])}</a>'
-                  f'<a class="button button-secondary" href="./features.html">{_escape(hero["secondary_action"])}</a></div>'
-                  f'</div><figure class="product-preview">{_product_preview(c, t, prefix)}</figure></section>'
-                  f'<section class="home-features section-rule" aria-label="{_escape(t["nav"]["features"])}"><div class="feature-teasers">{teasers}</div></section>')
     if page == "features":
         return (f'<header class="page-heading"><h1>{_escape(t["features"]["title"])}</h1><p>{_escape(t["pages"][page]["description"])}</p></header>'
                 + _platforms(c, t, prefix) + '<div class="feature-groups">'
@@ -349,6 +325,41 @@ def _body(c, t, page, prefix):
     return (f'<header class="page-heading"><h1>{_escape(t["community"]["title"])}</h1><p>{_escape(t["community"]["description"])}</p></header>'
             f'<div class="community-rows">{rows}</div><a class="source-link" href="{_href(links["repository"], prefix)}">{_svg("code")}'
             f'{_escape(ui["source"])} <span aria-hidden="true">↗</span></a>')
+
+
+def _workbench(c, code, prefix):
+    words = json.loads((TEMPLATE.parent / f"workbench.{code}.json").read_text(encoding="utf-8"))
+    values = {key: _escape(value) for key, value in words.items() if key != "messages"}
+    values["messages"] = _escape(json.dumps(words["messages"], ensure_ascii=False, separators=(",", ":")))
+    for icon in ("paper", "check", "copy", "terminal", "close"):
+        values[f"{icon}Icon"] = _svg(icon)
+    values["rulesUrl"] = _href(c["links"]["repository"].rstrip("/") + "/blob/main/lib/notes.mjs", prefix)
+    values["testsUrl"] = _href(c["links"]["repository"].rstrip("/") + "/blob/main/test/notes.test.mjs", prefix)
+    for key, suffix in (("fullVideo", ""), ("shortVideoUrl", "-short"), ("verticalVideoUrl", "-vertical")):
+        values[key] = _href(f"media/terminal-session{suffix}.mp4", prefix)
+    body = (TEMPLATE.parent / "workbench.html").read_text(encoding="utf-8").rstrip()
+    brand = ('<svg viewBox="0 0 40 34" aria-hidden="true"><path fill="#9dc5ff" d="M10 2h9l4 4h14v17H10z"/>'
+             '<path fill="#f2ff68" d="M5 8h10l4 4h15v16H5z"/><path fill="#ff9853" d="M1 15h10l4 4h15v13H1z"/></svg>'
+             'Tangyixiao Workflow')
+    return {
+        "CONTENT": re.sub(r"\{\{(\w+)\}\}", lambda match: values[match[1]], body),
+        "BRAND": brand,
+        "PAGE_ASSETS": (f'\n  <link rel="stylesheet" href="{prefix}workbench.css">'
+                        f'\n  <script src="{prefix}workbench.js" defer></script>'),
+        "HEADER_ACTION": (f'\n      <a class="record" data-video href="{values["fullVideo"]}" aria-label="{values["video"]}">'
+                          f'{values["terminalIcon"]}<span>{values["video"]}</span></a>'),
+    }
+
+
+def _browser_script():
+    source = (ROOT.parent / "lib" / "notes.mjs").read_text(encoding="utf-8")
+    declaration = "export function reviewReleaseNotes("
+    if source.count(declaration) != 1:
+        raise ValueError("Expected one reviewReleaseNotes export in lib/notes.mjs")
+    source = source.replace(declaration, "function reviewReleaseNotes(")
+    controls = (TEMPLATE.parent / "workbench.js").read_text(encoding="utf-8")
+    return ('// Generated from lib/notes.mjs and templates/workbench.js by scripts/render_site.py.\n'
+            '(() => {\n"use strict";\n' + source + '\n' + controls + '})();\n')
 
 
 def render(config: dict, locale=None, page="home", locale_code=None) -> str:
@@ -380,16 +391,20 @@ def render(config: dict, locale=None, page="home", locale_code=None) -> str:
         "THEME_COLOR_LIGHT": "#18191b" if c.get("theme") == "dark" else "#ffffff",
         "THEME_COLOR_DARK": "#ffffff" if c.get("theme", "light") == "light" else "#18191b",
         "META_TITLE": _escape(t["pages"][page]["title"]), "META_DESCRIPTION": _escape(t["meta"]["description"] if page == "home" else t["pages"][page]["description"]),
-        "ALTERNATES": ''.join(alternates), "NAME": _escape(c["name"]), "NAVIGATION": nav,
+        "ALTERNATES": ''.join(alternates), "NAVIGATION": nav,
         "SKIP_LINK": _escape(ui["skip_link"]), "NAV_LABEL": _escape(ui["navigation"]),
         "OPEN_NAV": _escape(ui["open_navigation"]), "CLOSE_NAV": _escape(ui["close_navigation"]),
         "LANGUAGE_LABEL": _escape(ui["language"]), "LANGUAGE_NAME": _escape(entry["label"]), "LANGUAGE_LINKS": ''.join(language_links),
         "THEME_LABEL": _escape(ui["theme"]), "THEME_NAME": _escape(ui[c.get("theme", "light")]), "THEME_CHOICES": choices,
         "REPOSITORY_URL": _href(c["links"]["repository"], prefix), "GITHUB": _escape(ui["github"]),
-        "CONTENT": _body(c, t, page, prefix), "COPYRIGHT": _escape(t["footer"]["copyright"]),
+        "COPYRIGHT": _escape(t["footer"]["copyright"]),
         "LICENSE_URL": _href(c["links"]["license"], prefix),
         "LICENSE_LABEL": _escape(t["ui"].get("license", c["license_label"])),
     }
+    if page == "home":
+        values.update(_workbench(c, code, prefix))
+    else:
+        values.update(CONTENT=_body(c, t, page, prefix), BRAND=_escape(c["name"]), PAGE_ASSETS="", HEADER_ACTION="")
     template = TEMPLATE.read_text(encoding="utf-8")
     def substitute(match):
         if match.group(1) not in values:
@@ -434,9 +449,10 @@ def main(argv=None):
     try:
         config = json.loads(args.config.read_text(encoding="utf-8"))
         pages = render_site(config, load_locales(config, args.config))
+        files = {**pages, "workbench.js": _browser_script()}
         retired = _retired_pages(args.output_dir, pages)
         if args.check:
-            outdated = [name for name, source in pages.items()
+            outdated = [name for name, source in files.items()
                         if not (args.output_dir / name).is_file() or (args.output_dir / name).read_text(encoding="utf-8") != source]
             if outdated or retired:
                 if outdated:
@@ -444,13 +460,13 @@ def main(argv=None):
                 if retired:
                     print("Retired generated pages require review: " + ", ".join(retired), file=sys.stderr)
                 return 1
-            print(f"All {len(pages)} project pages are current.")
+            print(f"All {len(pages)} project pages and the browser checker are current.")
         else:
-            for name, source in pages.items():
+            for name, source in files.items():
                 target = args.output_dir / name
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(source, encoding="utf-8", newline="\n")
-            print(f"Rendered {len(pages)} project pages in {args.output_dir}")
+            print(f"Rendered {len(pages)} project pages and the browser checker in {args.output_dir}")
             if retired:
                 print("Retired generated pages retained for review: " + ", ".join(retired), file=sys.stderr)
         return 0

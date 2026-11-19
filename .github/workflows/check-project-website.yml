@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'project-website/**'
+      - 'lib/notes.mjs'
       - '.github/workflows/check-project-website.yml'
   workflow_dispatch:
 permissions:
@@ -19,7 +20,9 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
-          sparse-checkout: project-website
+          sparse-checkout: |
+            project-website
+            lib
       - name: Check rendered pages, local links and translations
         run: python3 project-website/scripts/check.py
       - name: Ensure the browser can render Chinese copy

@@ -1,10 +1,10 @@
 {
   "meta": {
-    "description": "Use the Skill in a repository to draft a README, a pull request or release notes in the project's style. The local CLI can check project configuration, Git tags and release file hashes."
+    "description": "Check a release-note draft in your browser, copy the task into your own Codex chat, or watch a real terminal session."
   },
   "pages": {
     "home": {
-      "title": "Write project docs and check release files · {project}"
+      "title": "Try a release-note check · {project}"
     },
     "features": {
       "title": "Features · {project}",

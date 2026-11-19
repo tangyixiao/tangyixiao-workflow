@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Project website template">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="在目标仓库调用 Skill，按项目惯例起草 README、PR 或发行说明。随附的本地 CLI 可以检查项目配置、Git 标签和发行文件的哈希。">
+  <meta name="description" content="在浏览器中检查发行草稿，复制到自己的 Codex 会话，或观看一次真实的终端操作。">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#18191b" media="(prefers-color-scheme: dark)">
-  <title>写项目文档，检查候选发行文件 · tangyixiao-workflow</title>
+  <title>亲手检查一份发行说明 · tangyixiao-workflow</title>
   <link rel="alternate" hreflang="zh-CN" href="./index.html"><link rel="alternate" hreflang="en" href="./en/index.html">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <script src="./theme-init.js"></script>
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./workbench.css">
+  <script src="./workbench.js" defer></script>
 </head>
 <body class="page-home" id="top">
   <a class="skip-link" href="#main">跳转到主要内容</a>
   <header class="site-header wrap">
-    <a class="brand" href="./index.html">tangyixiao-workflow</a>
+    <a class="brand" href="./index.html"><svg viewBox="0 0 40 34" aria-hidden="true"><path fill="#9dc5ff" d="M10 2h9l4 4h14v17H10z"/><path fill="#f2ff68" d="M5 8h10l4 4h15v16H5z"/><path fill="#ff9853" d="M1 15h10l4 4h15v13H1z"/></svg>Tangyixiao Workflow</a>
     <nav class="main-nav" id="main-nav" aria-label="主导航"><a href="./index.html" aria-current="page">首页</a><a href="./features.html">项目特点</a><a href="./download.html">开始使用</a><a href="./community.html">参与项目</a></nav>
     <div class="header-tools">
+      <a class="record" data-video href="./media/terminal-session.mp4" aria-label="真实终端录屏"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 8 4 4-4 4m7 0h4"/></svg><span>真实终端录屏</span></a>
       <details class="language-picker picker">
         <summary aria-label="选择语言"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5h12M9 2v3m4 0c-1 6-5 10-10 12m2-9c2 4 5 7 9 9m0 4 4-11 4 11m-6-4h4"/></svg><span class="language-current">简体中文</span></summary>
         <nav class="picker-menu" aria-label="选择语言"><a href="./index.html" lang="zh-CN" hreflang="zh-CN" aria-current="true">简体中文</a><a href="./en/index.html" lang="en" hreflang="en">English</a></nav>
@@ -33,7 +36,61 @@
       <button class="menu-toggle" type="button" aria-label="打开导航" data-open-label="打开导航" data-close-label="关闭导航" aria-expanded="false" aria-controls="main-nav" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </header>
-  <main id="main" class="wrap"><section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">写项目文档，检查候选发行文件</h1><div class="hero-description"><p>在目标仓库调用 Skill，按项目惯例起草 README、PR 或发行说明。随附的本地 CLI 可以检查项目配置、Git 标签和发行文件的哈希。</p></div><div class="hero-actions"><a class="button button-primary" href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/docs/getting-started.md">在 GitHub 阅读安装指南</a><a class="button button-secondary" href="./features.html">查看使用场景</a></div></div><figure class="product-preview"><div class="guide-card"><h2>从本地开始</h2><ol><li><a href="./download.html#instructions"><strong>检查环境</strong><span>在工具包根目录运行 node bin/pwf.mjs doctor，查看 Node.js 和 Git 版本。</span></a></li><li><a href="./download.html#instructions"><strong>安装并调用 Skill</strong><span>打开源码中的 docs/getting-started.md，按说明安装。然后在目标仓库调用 $tangyixiao-workflow。</span></a></li></ol></div></figure></section><section class="home-features section-rule" aria-label="项目特点"><div class="feature-teasers"><article class="feature-teaser teaser-code"><header><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5Zm-9 10 9 5 9-5M3 18l9 5 9-5"/></svg><h2>按项目惯例写 README 和 PR</h2></header><p>在目标仓库调用 $tangyixiao-workflow，让它结合贡献指南、PR 模板和本次改动起草正文。</p><a class="feature-more" href="./features.html">查看详情 <span aria-hidden="true">→</span></a></article><article class="feature-teaser teaser-training"><header><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h15v18H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 14h15M7 7h9M7 11h6"/></svg><h2>检查项目配置和候选发行文件</h2></header><p>用 adopt 预览接入计划。应用后，用 check 核对项目配置和 AGENTS 中受管理的段落。</p><a class="feature-more" href="./features.html">查看详情 <span aria-hidden="true">→</span></a></article></div></section></main>
+  <main id="main" class="wrap"><section class="bench-hero" aria-labelledby="hero-title">
+  <div class="bench-intro">
+    <div><p class="bench-identity">装进 Codex 的项目维护 Skill ＋ 本地检查工具</p><h1 id="hero-title">亲手检查一份发行说明</h1></div>
+    <p class="bench-lede">改一行正文，看看哪条提示会消失。
+检查在浏览器本地运行。</p>
+  </div>
+</section>
+<div class="workbench">
+  <form class="edit" id="edit" novalidate autocomplete="off" data-messages="{&quot;pass&quot;:&quot;通过&quot;,&quot;fail&quot;:&quot;待改&quot;,&quot;stale&quot;:&quot;等待检查&quot;,&quot;staleMessage&quot;:&quot;草稿已修改。点击“检查”，查看当前文字的结果。&quot;,&quot;missing&quot;:&quot;材料未填全&quot;,&quot;needTitle&quot;:&quot;请填写发行标题。&quot;,&quot;needNotes&quot;:&quot;请填写正文。&quot;,&quot;writing&quot;:&quot;个人草稿 · 可继续编辑&quot;,&quot;copied&quot;:&quot;已复制任务、当前草稿和检查发现。&quot;,&quot;manualHint&quot;:&quot;浏览器未能写入剪贴板。已选中任务文字，可手动复制。&quot;,&quot;noIssues&quot;:&quot;通用规则全部通过。&quot;,&quot;taskIntro&quot;:&quot;请使用 $tangyixiao-workflow，参考当前仓库的贡献指南、发行约定和实际改动，为维护者修改以下发行说明。保留能从仓库证实的事实。先核实检查发现，给出修订稿并标明仍缺的依据。&quot;,&quot;findings&quot;:&quot;检查发现&quot;,&quot;suggestions&quot;:&quot;编辑建议&quot;,&quot;categories&quot;:{&quot;notes-no-duplicate-title&quot;:[&quot;正文标题&quot;,&quot;正文首行重复了发行标题。可以删除首行，从改动本身写起。&quot;,&quot;正文首行没有重复发行标题。&quot;],&quot;notes-no-private-instructions&quot;:[&quot;内部指令&quot;,&quot;正文提及私人指令或审批经过。可以直接描述产品改了什么。&quot;,&quot;未发现规则匹配的私人指令或审批措辞。&quot;],&quot;notes-no-private-machine-state&quot;:[&quot;个人机器状态&quot;,&quot;正文写入了私人机器的预览状态。将其移至任务记录。&quot;,&quot;未发现规则匹配的个人机器状态。&quot;]},&quot;advisories&quot;:{&quot;local-debug-history&quot;:&quot;本地排错经过可移到开发记录。若它能解释用户会遇到的问题，可保留必要部分。&quot;,&quot;validation-in-main-copy&quot;:&quot;把测试依据写短，必要时提供链接或折叠。正文优先说明变化和安装影响。&quot;,&quot;delivery-report-in-main-copy&quot;:&quot;证据边界可放在验证记录中，发行正文保留具体的使用限制。&quot;},&quot;storageUnavailable&quot;:&quot;另一种语言会在新标签页打开。当前草稿保留在这里，可随时复制。&quot;,&quot;findingOne&quot;:&quot;{n} 项待改&quot;,&quot;findingsMany&quot;:&quot;{n} 项待改&quot;,&quot;allGood&quot;:&quot;{n} 项均通过&quot;}">
+    <div class="pane-head">
+      <h2><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2h10l4 4v16H5zM14 2v5h5M8 11h8M8 15h8"/></svg>试写区</h2>
+      <span class="sample-note" id="sample-note">预填内容是可编辑的演示文本</span>
+    </div>
+    <label for="release-title">发行标题</label>
+    <input type="text" id="release-title" value="示例项目 v1.2" required>
+    <label for="notes">正文（Markdown）</label>
+    <textarea id="notes" rows="4" aria-describedby="sample-note" required># 示例项目 v1.2
+
+按照用户要求，新增了 CSV 导出。</textarea>
+    <p id="field-error" class="field-error" role="alert" hidden></p>
+    <div id="draft-actions" hidden>
+      <div class="bench-buttons">
+        <button type="submit" class="bench-primary" id="run"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12 5 5 10-11"/></svg>检查</button>
+        <button type="button" class="bench-secondary" id="copy"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="7" width="12" height="14" rx="2"/><path d="M16 7V3H4v14h4"/></svg>复制给 Codex</button>
+      </div>
+      <p class="bench-helper">复制后，粘贴到你自己的 Codex 对话并发送，即可让 AI 帮你改写。</p>
+    </div>
+    <p id="copy-status" role="status" hidden></p>
+    <div id="manual-copy" hidden><label for="task-text">复制下方任务文字</label><textarea id="task-text" rows="6" readonly></textarea></div>
+  </form>
+  <section class="report" aria-labelledby="report-heading">
+    <div class="pane-head"><h2 id="report-heading">检查结果</h2><span id="count" role="status" class="count" hidden></span></div>
+    <noscript><p class="bench-fallback">启用 JavaScript 即可在这里检查草稿，或在工具包目录用本地命令检查 Markdown 文件。</p><pre><code>node bin/pwf.mjs notes-check --notes notes.md --title "示例项目 v1.2"</code></pre></noscript>
+    <p id="pending" class="pending" hidden></p>
+    <ul id="rules" class="rules"></ul>
+    <div id="advisories" hidden><h3>编辑建议</h3><ul></ul></div>
+    <p class="report-foot">三项通用发布检查。文字质量和功能声明仍需人工核实。 <a href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/lib/notes.mjs">查看规则源码 ↗</a></p>
+  </section>
+</div>
+<div class="bench-more">
+  <p>Tangyixiao Workflow 也能按项目模板起草 PR，并在本地核对发版的标签、版本和文件哈希。 <a href="./download.html">安装指南</a></p>
+  <a class="record" data-video href="./media/terminal-session.mp4"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 8 4 4-4 4m7 0h4"/></svg><span>真实终端录屏</span></a>
+</div>
+<dialog id="player" aria-labelledby="record-heading">
+  <div class="modal-head"><h2 id="record-heading">真实终端录屏</h2><button id="close" type="button" aria-label="关闭录像" autofocus><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button></div>
+  <video id="terminal-video" controls playsinline preload="none" aria-label="录制于实际终端会话"></video>
+  <p id="media-error" role="status" hidden>浏览器未能播放这段录像。可使用下方链接下载原片。</p>
+  <div class="modal-foot">
+    <span>录制于实际终端会话</span>
+    <a href="./media/terminal-session.mp4" download>下载录像</a>
+    <a href="./media/terminal-session-short.mp4">36 秒节选</a>
+    <a href="./media/terminal-session-vertical.mp4">竖版录像</a>
+    <a href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/test/notes.test.mjs">查看规则测试</a>
+  </div>
+</dialog></main>
   <footer class="site-footer wrap"><p>Website template © 2026 Tang Yixiao and contributors <span aria-hidden="true">·</span> <a href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/LICENSE">Apache-2.0</a></p></footer>
 </body>
 </html>

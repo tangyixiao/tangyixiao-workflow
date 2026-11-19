@@ -14,12 +14,11 @@ journey and a stable, direct link for the second.
   roles, system sans-serif stack with Chinese fallbacks, and keyboard focus
   treatment. Use those tokens for routine work. Check the actual rendered
   Chinese glyphs, long English identifiers, and inline command/file names.
-- On wide screens the current content rail tops out at 1120 CSS pixels. The
-  hero switches to a single column at 700 pixels; at 768 pixels it still has
-  to accommodate both columns. Judge the breakpoint by the words and the
-  example fitting at reading size. The current primary link is blue
-  (`#1859e8` in light mode, `#99bfff` in dark mode). Keep interactive
-  emphasis and keyboard focus distinguishable across both themes.
+- The homepage introduces the tool with a blue masthead and an editable draft.
+  Give the editor and check results adjacent space on desktop and a single
+  reading order on mobile. Use visible labels, text and keyboard focus in both
+  themes. Examples identify their source, and the actual terminal recording is
+  available to play on demand.
 - The stdlib renderer shares the header, footer, navigation and controls between
   pages. Keep browser-native disclosure and links where they meet the need.
   A new component library should solve a specific interaction this site lacks.

@@ -13,14 +13,14 @@
   <link rel="icon" href="{{SITE_ROOT}}favicon.svg" type="image/svg+xml">
   <script src="{{SITE_ROOT}}theme-init.js"></script>
   <link rel="stylesheet" href="{{SITE_ROOT}}style.css">
-  <script src="{{SITE_ROOT}}script.js" defer></script>
+  <script src="{{SITE_ROOT}}script.js" defer></script>{{PAGE_ASSETS}}
 </head>
 <body class="page-{{PAGE}}" id="top">
   <a class="skip-link" href="#main">{{SKIP_LINK}}</a>
   <header class="site-header wrap">
-    <a class="brand" href="./index.html">{{NAME}}</a>
+    <a class="brand" href="./index.html">{{BRAND}}</a>
     <nav class="main-nav" id="main-nav" aria-label="{{NAV_LABEL}}">{{NAVIGATION}}</nav>
-    <div class="header-tools">
+    <div class="header-tools">{{HEADER_ACTION}}
       <details class="language-picker picker">
         <summary aria-label="{{LANGUAGE_LABEL}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5h12M9 2v3m4 0c-1 6-5 10-10 12m2-9c2 4 5 7 9 9m0 4 4-11 4 11m-6-4h4"/></svg><span class="language-current">{{LANGUAGE_NAME}}</span></summary>
         <nav class="picker-menu" aria-label="{{LANGUAGE_LABEL}}">{{LANGUAGE_LINKS}}</nav>

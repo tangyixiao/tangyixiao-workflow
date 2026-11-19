@@ -1,0 +1,52 @@
+<section class="bench-hero" aria-labelledby="hero-title">
+  <div class="bench-intro">
+    <div><p class="bench-identity">{{identity}}</p><h1 id="hero-title">{{title}}</h1></div>
+    <p class="bench-lede">{{intro}}</p>
+  </div>
+</section>
+<div class="workbench">
+  <form class="edit" id="edit" novalidate autocomplete="off" data-messages="{{messages}}">
+    <div class="pane-head">
+      <h2>{{paperIcon}}{{editor}}</h2>
+      <span class="sample-note" id="sample-note">{{sample}}</span>
+    </div>
+    <label for="release-title">{{titleLabel}}</label>
+    <input type="text" id="release-title" value="{{seedTitle}}" required>
+    <label for="notes">{{bodyLabel}}</label>
+    <textarea id="notes" rows="4" aria-describedby="sample-note" required>{{seedNotes}}</textarea>
+    <p id="field-error" class="field-error" role="alert" hidden></p>
+    <div id="draft-actions" hidden>
+      <div class="bench-buttons">
+        <button type="submit" class="bench-primary" id="run">{{checkIcon}}{{run}}</button>
+        <button type="button" class="bench-secondary" id="copy">{{copyIcon}}{{copy}}</button>
+      </div>
+      <p class="bench-helper">{{copyHint}}</p>
+    </div>
+    <p id="copy-status" role="status" hidden></p>
+    <div id="manual-copy" hidden><label for="task-text">{{manual}}</label><textarea id="task-text" rows="6" readonly></textarea></div>
+  </form>
+  <section class="report" aria-labelledby="report-heading">
+    <div class="pane-head"><h2 id="report-heading">{{results}}</h2><span id="count" role="status" class="count" hidden></span></div>
+    <noscript><p class="bench-fallback">{{fallback}}</p><pre><code>node bin/pwf.mjs notes-check --notes notes.md --title "{{seedTitle}}"</code></pre></noscript>
+    <p id="pending" class="pending" hidden></p>
+    <ul id="rules" class="rules"></ul>
+    <div id="advisories" hidden><h3>{{advice}}</h3><ul></ul></div>
+    <p class="report-foot">{{scope}} <a href="{{rulesUrl}}">{{source}}</a></p>
+  </section>
+</div>
+<div class="bench-more">
+  <p>{{about}} <a href="./download.html">{{install}}</a></p>
+  <a class="record" data-video href="{{fullVideo}}">{{terminalIcon}}<span>{{video}}</span></a>
+</div>
+<dialog id="player" aria-labelledby="record-heading">
+  <div class="modal-head"><h2 id="record-heading">{{video}}</h2><button id="close" type="button" aria-label="{{close}}" autofocus>{{closeIcon}}</button></div>
+  <video id="terminal-video" controls playsinline preload="none" aria-label="{{terminal}}"></video>
+  <p id="media-error" role="status" hidden>{{mediaError}}</p>
+  <div class="modal-foot">
+    <span>{{terminal}}</span>
+    <a href="{{fullVideo}}" download>{{download}}</a>
+    <a href="{{shortVideoUrl}}">{{shortVideo}}</a>
+    <a href="{{verticalVideoUrl}}">{{verticalVideo}}</a>
+    <a href="{{testsUrl}}">{{tests}}</a>
+  </div>
+</dialog>

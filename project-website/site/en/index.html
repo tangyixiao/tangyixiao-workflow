@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Project website template">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Use the Skill in a repository to draft a README, a pull request or release notes in the project&#x27;s style. The local CLI can check project configuration, Git tags and release file hashes.">
+  <meta name="description" content="Check a release-note draft in your browser, copy the task into your own Codex chat, or watch a real terminal session.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#18191b" media="(prefers-color-scheme: dark)">
-  <title>Write project docs and check release files · tangyixiao-workflow</title>
+  <title>Try a release-note check · tangyixiao-workflow</title>
   <link rel="alternate" hreflang="zh-CN" href="../index.html"><link rel="alternate" hreflang="en" href="../en/index.html">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <script src="../theme-init.js"></script>
   <link rel="stylesheet" href="../style.css">
   <script src="../script.js" defer></script>
+  <link rel="stylesheet" href="../workbench.css">
+  <script src="../workbench.js" defer></script>
 </head>
 <body class="page-home" id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header wrap">
-    <a class="brand" href="./index.html">tangyixiao-workflow</a>
+    <a class="brand" href="./index.html"><svg viewBox="0 0 40 34" aria-hidden="true"><path fill="#9dc5ff" d="M10 2h9l4 4h14v17H10z"/><path fill="#f2ff68" d="M5 8h10l4 4h15v16H5z"/><path fill="#ff9853" d="M1 15h10l4 4h15v13H1z"/></svg>Tangyixiao Workflow</a>
     <nav class="main-nav" id="main-nav" aria-label="Main navigation"><a href="./index.html" aria-current="page">Home</a><a href="./features.html">Features</a><a href="./download.html">Get started</a><a href="./community.html">Community</a></nav>
     <div class="header-tools">
+      <a class="record" data-video href="../media/terminal-session.mp4" aria-label="Terminal recording"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 8 4 4-4 4m7 0h4"/></svg><span>Terminal recording</span></a>
       <details class="language-picker picker">
         <summary aria-label="Choose language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5h12M9 2v3m4 0c-1 6-5 10-10 12m2-9c2 4 5 7 9 9m0 4 4-11 4 11m-6-4h4"/></svg><span class="language-current">English</span></summary>
         <nav class="picker-menu" aria-label="Choose language"><a href="../index.html" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="../en/index.html" lang="en" hreflang="en" aria-current="true">English</a></nav>
@@ -33,7 +36,61 @@
       <button class="menu-toggle" type="button" aria-label="Open navigation" data-open-label="Open navigation" data-close-label="Close navigation" aria-expanded="false" aria-controls="main-nav" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </header>
-  <main id="main" class="wrap"><section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">Write project docs and check release files</h1><div class="hero-description"><p>Use the Skill in a repository to draft a README, a pull request or release notes in the project&#x27;s style. The local CLI can check project configuration, Git tags and release file hashes.</p></div><div class="hero-actions"><a class="button button-primary" href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/docs/getting-started.md">Read the install guide on GitHub</a><a class="button button-secondary" href="./features.html">Explore use cases</a></div></div><figure class="product-preview"><div class="guide-card"><h2>Start locally</h2><ol><li><a href="./download.html#instructions"><strong>Check your environment</strong><span>Run node bin/pwf.mjs doctor from the toolkit root to see the Node.js and Git versions.</span></a></li><li><a href="./download.html#instructions"><strong>Install and invoke the Skill</strong><span>Open docs/getting-started.md in your checkout for installation steps. Then call $tangyixiao-workflow in the target repository.</span></a></li></ol></div></figure></section><section class="home-features section-rule" aria-label="Features"><div class="feature-teasers"><article class="feature-teaser teaser-code"><header><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5Zm-9 10 9 5 9-5M3 18l9 5 9-5"/></svg><h2>Draft a README or pull request</h2></header><p>Call $tangyixiao-workflow in the target repository. Ask it to use the contribution guide, PR template and your changes to draft a pull request.</p><a class="feature-more" href="./features.html">Explore features <span aria-hidden="true">→</span></a></article><article class="feature-teaser teaser-training"><header><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h15v18H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 14h15M7 7h9M7 11h6"/></svg><h2>Check configuration and release files</h2></header><p>Run adopt to preview changes. Once applied, use check to verify the project configuration and the managed section of AGENTS.</p><a class="feature-more" href="./features.html">Explore features <span aria-hidden="true">→</span></a></article></div></section></main>
+  <main id="main" class="wrap"><section class="bench-hero" aria-labelledby="hero-title">
+  <div class="bench-intro">
+    <div><p class="bench-identity">A Codex skill and local tools for repository maintenance</p><h1 id="hero-title">Try a release-note check</h1></div>
+    <p class="bench-lede">Edit a line and see which finding changes.
+The checks run here in your browser.</p>
+  </div>
+</section>
+<div class="workbench">
+  <form class="edit" id="edit" novalidate autocomplete="off" data-messages="{&quot;pass&quot;:&quot;Pass&quot;,&quot;fail&quot;:&quot;Review&quot;,&quot;stale&quot;:&quot;Ready to recheck&quot;,&quot;staleMessage&quot;:&quot;The draft has changed. Run the check again to see its current results.&quot;,&quot;missing&quot;:&quot;Input needed&quot;,&quot;needTitle&quot;:&quot;Enter a release title.&quot;,&quot;needNotes&quot;:&quot;Enter the release notes.&quot;,&quot;writing&quot;:&quot;Your editable draft&quot;,&quot;copied&quot;:&quot;Task, draft and findings copied.&quot;,&quot;manualHint&quot;:&quot;Clipboard access was unavailable. The task is selected for manual copying.&quot;,&quot;noIssues&quot;:&quot;All general checks passed.&quot;,&quot;taskIntro&quot;:&quot;Use $tangyixiao-workflow to revise these release notes for maintainers. Read this repository’s contribution guidance, release conventions and actual changes. Preserve verified facts, verify the findings, and return a revised draft with any missing evidence called out.&quot;,&quot;findings&quot;:&quot;Findings&quot;,&quot;suggestions&quot;:&quot;Editorial suggestions&quot;,&quot;categories&quot;:{&quot;notes-no-duplicate-title&quot;:[&quot;Duplicate title&quot;,&quot;The opening heading repeats the release title. Remove it and start with a useful change.&quot;,&quot;The opening heading does not repeat the release title.&quot;],&quot;notes-no-private-instructions&quot;:[&quot;Private instructions&quot;,&quot;The draft mentions a private instruction or approval. Describe the product change directly.&quot;,&quot;No private instruction or approval wording matched the rule.&quot;],&quot;notes-no-private-machine-state&quot;:[&quot;Private machine state&quot;,&quot;The draft mentions private preview state. Move that detail into the task record.&quot;,&quot;No private machine-state wording matched the rule.&quot;]},&quot;advisories&quot;:{&quot;local-debug-history&quot;:&quot;Move local debugging history into a development record unless it explains a user-facing issue.&quot;,&quot;validation-in-main-copy&quot;:&quot;Keep test evidence concise and linked or folded. Lead with changes and installation impact.&quot;,&quot;delivery-report-in-main-copy&quot;:&quot;Move evidence boundaries into verification records and keep concrete user-facing limitations in the notes.&quot;},&quot;storageUnavailable&quot;:&quot;The other language opens in a new tab. Your edited draft stays here for copying.&quot;,&quot;findingOne&quot;:&quot;{n} finding&quot;,&quot;findingsMany&quot;:&quot;{n} findings&quot;,&quot;allGood&quot;:&quot;All {n} checks pass&quot;}">
+    <div class="pane-head">
+      <h2><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2h10l4 4v16H5zM14 2v5h5M8 11h8M8 15h8"/></svg>Your draft</h2>
+      <span class="sample-note" id="sample-note">Editable sample text</span>
+    </div>
+    <label for="release-title">Release title</label>
+    <input type="text" id="release-title" value="Sample project v1.2" required>
+    <label for="notes">Body (Markdown)</label>
+    <textarea id="notes" rows="4" aria-describedby="sample-note" required># Sample project v1.2
+
+As requested by the user, this release adds CSV export.</textarea>
+    <p id="field-error" class="field-error" role="alert" hidden></p>
+    <div id="draft-actions" hidden>
+      <div class="bench-buttons">
+        <button type="submit" class="bench-primary" id="run"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12 5 5 10-11"/></svg>Check notes</button>
+        <button type="button" class="bench-secondary" id="copy"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="7" width="12" height="14" rx="2"/><path d="M16 7V3H4v14h4"/></svg>Copy for Codex</button>
+      </div>
+      <p class="bench-helper">Paste the copied task into your own Codex chat and send it to get an AI rewrite.</p>
+    </div>
+    <p id="copy-status" role="status" hidden></p>
+    <div id="manual-copy" hidden><label for="task-text">Copy the task below</label><textarea id="task-text" rows="6" readonly></textarea></div>
+  </form>
+  <section class="report" aria-labelledby="report-heading">
+    <div class="pane-head"><h2 id="report-heading">Check results</h2><span id="count" role="status" class="count" hidden></span></div>
+    <noscript><p class="bench-fallback">Enable JavaScript to check a draft here, or run the local command in the toolkit directory to check a Markdown file.</p><pre><code>node bin/pwf.mjs notes-check --notes notes.md --title "Sample project v1.2"</code></pre></noscript>
+    <p id="pending" class="pending" hidden></p>
+    <ul id="rules" class="rules"></ul>
+    <div id="advisories" hidden><h3>Editorial suggestions</h3><ul></ul></div>
+    <p class="report-foot">Three general publishing checks. Review the writing and verify product claims separately. <a href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/lib/notes.mjs">Read the rules ↗</a></p>
+  </section>
+</div>
+<div class="bench-more">
+  <p>Tangyixiao Workflow also drafts PRs to fit your repo and checks release versions, tags and file hashes locally. <a href="./download.html">Install guide</a></p>
+  <a class="record" data-video href="../media/terminal-session.mp4"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 8 4 4-4 4m7 0h4"/></svg><span>Terminal recording</span></a>
+</div>
+<dialog id="player" aria-labelledby="record-heading">
+  <div class="modal-head"><h2 id="record-heading">Terminal recording</h2><button id="close" type="button" aria-label="Close recording" autofocus><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button></div>
+  <video id="terminal-video" controls playsinline preload="none" aria-label="Recorded in an actual terminal session"></video>
+  <p id="media-error" role="status" hidden>The browser could not play this recording. Use the link below to download it.</p>
+  <div class="modal-foot">
+    <span>Recorded in an actual terminal session</span>
+    <a href="../media/terminal-session.mp4" download>Download video</a>
+    <a href="../media/terminal-session-short.mp4">36-second excerpt</a>
+    <a href="../media/terminal-session-vertical.mp4">Portrait recording</a>
+    <a href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/test/notes.test.mjs">Rule tests</a>
+  </div>
+</dialog></main>
   <footer class="site-footer wrap"><p>Website template © 2026 Tang Yixiao and contributors <span aria-hidden="true">·</span> <a href="https://github.com/tangyixiao/tangyixiao-workflow/blob/main/LICENSE">Apache-2.0</a></p></footer>
 </body>
 </html>

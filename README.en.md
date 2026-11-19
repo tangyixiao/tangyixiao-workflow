@@ -102,4 +102,4 @@ Referenced projects and third-party material retain their own rights and attribu
 
 ## Project website
 
-Read the [English website](https://tangyixiao.github.io/tangyixiao-workflow/en/) or [中文网站](https://tangyixiao.github.io/tangyixiao-workflow/). After downloading the source, you can also open the [local English homepage](project-website/site/en/index.html) or [local Chinese homepage](project-website/site/index.html).
+Edit a draft on the [English release-note workbench](https://tangyixiao.github.io/tangyixiao-workflow/en/), check it locally, then copy the task to your own Codex chat. Watch the [recorded terminal session](https://tangyixiao.github.io/tangyixiao-workflow/media/terminal-session.mp4) or switch to [简体中文](https://tangyixiao.github.io/tangyixiao-workflow/). After downloading the source, open the [local English](project-website/site/en/index.html) or [local Chinese](project-website/site/index.html) homepage.
