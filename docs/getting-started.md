@@ -2,9 +2,14 @@
 
 [中文 README](../README.md) · [English README](../README.en.md)
 
-Use an existing Node.js 22+ runtime and the existing source checkout. This alpha
-requires no runtime dependencies, npm publication, daemon, or second clone of the
-receiving project. Run commands from the toolkit checkout unless noted otherwise.
+Install Node.js 22 or newer and Git before running the environment check. If you already have the toolkit source, open the directory containing `bin/pwf.mjs`. To obtain it for the first time, [download and extract the main source ZIP](https://github.com/tangyixiao/tangyixiao-workflow/archive/refs/heads/main.zip), or run the following commands with Git.
+
+```sh
+git clone https://github.com/tangyixiao/tangyixiao-workflow.git
+cd tangyixiao-workflow
+```
+
+Run the commands below from the toolkit directory. Open the receiving project separately when you are ready to use the Skill.
 
 ## Inspect, install, and discover
 

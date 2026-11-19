@@ -6,7 +6,7 @@ Use this Skill to write a repository README, prepare a pull request, or draft
 release notes. Its local CLI checks an adopted project's configuration, the
 managed section of its AGENTS file, and release candidate files.
 
-This is development version **0.1.0-alpha.1**, requiring **Node.js 22 or newer**.
+This is development version **0.1.0-alpha.1**, requiring **Node.js 22 or newer** and **Git**.
 Source: [tangyixiao/tangyixiao-workflow](https://github.com/tangyixiao/tangyixiao-workflow).
 It is not yet a published npm package or product Release. `@tangyixiao/workflow`
 is the project package name and `tywf` is its command alias. The examples below
@@ -14,8 +14,9 @@ invoke source directly rather than assuming a global command exists.
 
 ## Install for Codex
 
-Run from this source checkout. The first install invocation previews a plan; the
-second writes only to the explicitly selected skill directory.
+For a first install, [download the main source ZIP](https://github.com/tangyixiao/tangyixiao-workflow/archive/refs/heads/main.zip), extract it and open a shell in the directory containing `bin/pwf.mjs`. If you already have the source, open that directory.
+
+Run `doctor` to check the environment. Use `install` to preview the plan, then add `--apply` to install in the chosen Skill directory. Run `status` and check that `state` is `complete`.
 
 ```sh
 node bin/pwf.mjs doctor

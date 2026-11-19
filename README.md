@@ -4,11 +4,13 @@
 
 用这个 Skill 给仓库写 README、准备 PR 和发行说明。随附的本地 CLI 可以检查已接入项目的配置、受管理的 AGENTS 段落和候选发行文件。
 
-当前是 **0.1.0-alpha.1 开发版**，需要 **Node.js 22 或更新版本**。源码仓库是 [tangyixiao/tangyixiao-workflow](https://github.com/tangyixiao/tangyixiao-workflow)。本版尚未作为 npm 包或产品 Release 发布；`@tangyixiao/workflow` 是项目包名，`tywf` 是命令别名，下面直接使用源码 CLI，不依赖全局命令。
+当前是 **0.1.0-alpha.1 开发版**，需要 **Node.js 22 或更新版本**和 **Git**。源码仓库是 [tangyixiao/tangyixiao-workflow](https://github.com/tangyixiao/tangyixiao-workflow)。本版尚未作为 npm 包或产品 Release 发布；`@tangyixiao/workflow` 是项目包名，`tywf` 是命令别名，下面直接使用源码 CLI，不依赖全局命令。
 
 ## 安装到 Codex
 
-在本源码目录运行以下 PowerShell 命令。第一条安装命令只展示计划；确认目标和差异符合需要后，第二条才写入明确选择的目录。
+首次使用可从 GitHub [下载 main 源码 ZIP](https://github.com/tangyixiao/tangyixiao-workflow/archive/refs/heads/main.zip)。解压后，在包含 `bin/pwf.mjs` 的目录打开 PowerShell。已有源码的可以直接进入该目录。
+
+先用 `doctor` 检查环境，再用 `install` 预览安装计划。给 `install` 加上 `--apply` 后会写入选定的 Skill 目录。最后运行 `status`，确认 `state` 为 `complete`。
 
 ```powershell
 node bin/pwf.mjs doctor
