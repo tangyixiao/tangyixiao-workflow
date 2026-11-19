@@ -38,6 +38,8 @@ node bin/pwf.mjs status --destination "$skillDir"
 
 起草、核对项目事实和发布后回读的方法见[公开协作写作指南](skills/tangyixiao-workflow/references/public-writing.md)。
 
+需求不清或项目要跨阶段推进时，可参照[需求、计划与决策指南](skills/tangyixiao-workflow/references/planning-and-decisions.md)。交付前用[仓库维护清单](skills/tangyixiao-workflow/references/repository-stewardship.md)检查哪些入口需要更新。准备公开文件或换设备时，先看[文件去向与跨设备环境](skills/tangyixiao-workflow/references/files-and-devices.md)。
+
 ## 接入已有项目
 
 把项目路径、仓库名和类型换成真实值；`npm`、`static`、`generic` 只选适用的一种。

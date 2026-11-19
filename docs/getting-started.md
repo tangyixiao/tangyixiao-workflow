@@ -111,6 +111,16 @@ The finish command reports registered
 resources and a cleanup plan; it does not delete files or stop processes. Read the
 Skill's release/resources references before using those modes.
 
+After cleaning a task-owned file, retire its record. The first command previews
+the change. The second updates the ledger only if that path is absent.
+
+```sh
+node bin/pwf.mjs resource-remove --project . --task build --path work/project-workflow/build/output.log
+node bin/pwf.mjs resource-remove --project . --task build --path work/project-workflow/build/output.log --apply
+```
+
+For repository handoff, use the [maintenance and publication checklist](../skills/tangyixiao-workflow/references/repository-stewardship.md).
+
 ## Upgrade or remove
 
 After updating toolkit source, run `install --destination ...` again to inspect a

@@ -8,12 +8,15 @@ the scope. Personal choices from a private conversation are not universal policy
 | --- | --- | --- |
 | Installation | `install`, `status`, `uninstall` | Client discovery and actual Skill invocation |
 | [Public writing](../skills/tangyixiao-workflow/references/public-writing.md) | Available directly through the Skill in any repository | Apply the destination's conventions to README, About, Wiki, Actions output and other public contributions |
+| [Planning and decisions](../skills/tangyixiao-workflow/references/planning-and-decisions.md) | Project guidance | Identify a concrete need, plan verifiable milestones, and ask only for decisions that affect delivery |
+| [Repository maintenance](../skills/tangyixiao-workflow/references/repository-stewardship.md) | Project guidance | Review public entry points, discoverability, ownership, and publication state |
+| [Files and devices](../skills/tangyixiao-workflow/references/files-and-devices.md) | Project guidance | Choose what to store in Git and where to share it, then verify the environment on the receiving device |
 | Project adoption | `adopt`, `check`, `upgrade` | Project tests, representative adoption, project-owned customization |
 | Design | No site generator in this CLI | Real reference research, approved desktop/mobile overview, Chinese typography and visual comparison |
 | Documentation | No generic proof of content correctness | Native README, factual claims, meaningful screenshots, languages/themes, local links and actual examples |
 | Operations | Adoption configuration only | GitHub settings, one dependency manager, bounded bot PRs, labels, SEO, package-channel selection and runtime checks |
 | Release | `release-check`, `notes-check` | Exact archive internals, installation, signatures, registry state and consumer access |
-| Resources | Registration and `finish` inspection | Verified ownership, active consumers, recoverability, stopping task-owned jobs and separately authorized cleanup |
+| Resources | Register paths, inspect their combined size with `finish`, and retire missing entries with `resource-remove` | Verify ownership and recovery needs, stop task-owned jobs and clean confirmed disposable files |
 | Video | No recorder or renderer | Real product operations, suitable 60 fps MP4, horizontal/vertical recomposition, subtitles, covers and platform requirements |
 
 ## Release content has an audience

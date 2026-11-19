@@ -1,5 +1,10 @@
 # Repository operations mode
 
+At handoff, use [repository stewardship](repository-stewardship.md) for the
+reader-facing update check, maintenance ownership and discoverability. Use
+[files and devices](files-and-devices.md) when staging material, choosing an
+audience, or verifying a handoff to another environment.
+
 For About metadata, Wiki navigation, workflow names, check summaries and bot
 comments, use the [public writing guide](public-writing.md). The existing
 repository determines the publishing surface and local conventions.

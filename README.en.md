@@ -50,6 +50,8 @@ README, ask:
 
 For drafting, checking claims, and verifying published text, see the [public writing guide](skills/tangyixiao-workflow/references/public-writing.md) (Chinese).
 
+Use the [planning guide](skills/tangyixiao-workflow/references/planning-and-decisions.md) to clarify a request or map work across milestones. At handoff, review affected pages using the [maintenance checklist](skills/tangyixiao-workflow/references/repository-stewardship.md). The [file and device guide](skills/tangyixiao-workflow/references/files-and-devices.md) covers publication choices and environment checks on another machine. These guides are in Chinese.
+
 ## Adopt an existing project
 
 Replace the project path and repository with real values. Choose the applicable

@@ -1,6 +1,6 @@
 ---
 name: tangyixiao-workflow
-description: Write or review README, About, Wiki, Actions output, commits, PRs, issues, discussions and releases in any repository. Reuse development tools, choose and retire branches, estimate resources before heavy jobs, and clean up after delivery. Also supports project setup, websites, demo videos and local release checks.
+description: Draft public repository writing, discover requirements, plan short and long-term work, review Git visibility and cross-device setup, and check project delivery. Covers README, About, Wiki, PRs, releases, Pages, branches, resource estimates and cleanup.
 ---
 
 # Tangyixiao Workflow
@@ -45,6 +45,9 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Understand a request, write a phased plan, decide whether to ask | [Planning and decisions](references/planning-and-decisions.md) | Review existing evidence, resolve consequential decisions and report in plain language |
+| Maintain the repository, reach its audience, and check publication surfaces at handoff | [Repository stewardship](references/repository-stewardship.md) | Check actual branch, release and deployment state through the host |
+| Choose what to commit or disclose, or move work between devices | [Files and devices](references/files-and-devices.md) | Inspect the diff, rights, environment and transfer results |
 | Any text another person will see in a repository, its metadata, or an automation | [Public writing](references/public-writing.md) | Editorial workflow for drafting, review and publication within scope |
 | New website or substantial visual redesign | [Design](references/design.md) | Guidance; visual research and review use the available tools |
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
@@ -77,6 +80,11 @@ plan. Choose only applicable modules rather than filling every platform feature.
   result. After a merge, check whether the task branch and worktree can retire.
 
 ## Leave a usable result
+
+At each handoff, check whether the change affects README, the actual default
+branch, releases, discussions and the deployed website. Use the repository
+stewardship guide to update relevant surfaces within scope. Tell the person
+what they can use now, what remains and any decision only they can make.
 
 Use the public writing guide for titles, descriptions, comments and other visible
 text. Consult the documentation or release reference for the corresponding format.

@@ -79,3 +79,17 @@ work. Leave unrelated jobs under their owners' control.
    moving it on that volume may leave usage unchanged. Report remaining material
    scratch with its purpose, approximate size and the event that makes it
    removable.
+
+After an owned path is gone, preview retiring that specific ledger entry with
+`resource-remove --project PROJECT --task ID --path RELATIVE_PATH`. Add
+`--apply` to record the removal. Existing paths must be dealt with separately.
+Overlapping directory and file registrations keep their detail rows. Use the
+deduplicated `measuredBytes` total for observed logical file sizes.
+
+Writers share a lock beside the ledger and replace the ledger atomically.
+If a write times out, check the owner recorded in `resources.json.lock` (host,
+PID and acquisition time). Retry once the owner finishes. After a crash,
+confirm the owner has stopped before removing its abandoned lock and any
+identified staging file. Preserve the last valid ledger. The registry accepts
+up to 1,000 entries and 16 MiB of UTF-8 metadata. If an older writer left 1,001, retire an already absent
+entry to bring it back within the limit.
