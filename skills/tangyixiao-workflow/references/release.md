@@ -1,5 +1,9 @@
 # Release mode
 
+Begin with the destination project's [public writing conventions](public-writing.md).
+Use its release format when one exists. The Tangyixiao profiles are defaults for
+projects that select them.
+
 Separate stable product identity from display names, registry coordinates, and
 repository names. A repository may contain multiple independently versioned
 products. Historical releases keep their original product lineage; a later rename

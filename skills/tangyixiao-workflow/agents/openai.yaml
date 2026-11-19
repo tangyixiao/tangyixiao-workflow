@@ -1,4 +1,4 @@
 interface:
   display_name: "Tangyixiao Workflow"
-  short_description: "Project setup, release checks and resource closeout"
+  short_description: "Write for any repository and check project releases"
   default_prompt: "Use $tangyixiao-workflow to inspect this project and preview the applicable workflow without overwriting existing work."

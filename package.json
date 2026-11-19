@@ -2,7 +2,7 @@
   "name": "@tangyixiao/workflow",
   "version": "0.1.0-alpha.1",
   "private": true,
-  "description": "Installable project workflows with safe adoption, release checks and discoverable agent guidance",
+  "description": "An agent skill for writing project documentation and release notes, with a CLI to check Git tags, verify file hashes and track temporary files.",
   "type": "module",
   "license": "Apache-2.0",
   "engines": { "node": ">=22" },

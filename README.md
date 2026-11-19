@@ -2,7 +2,7 @@
 
 [English](README.en.md) · [上手指南](docs/getting-started.md) · [模块与边界](docs/modules.md) · [客户端支持](docs/client-support.md)
 
-把项目交付流程接入现有项目，并在下次会话继续使用：一个可发现的 Skill、一个无运行时依赖的本地 CLI，以及可检查的项目配置。设计、README、网站、仓库运营、发行、演示视频和资源收尾按任务选用，不给每次小修改套完整流程。
+用这个 Skill 给仓库写 README、准备 PR 和发行说明。随附的本地 CLI 可以检查已接入项目的配置、受管理的 AGENTS 段落和候选发行文件。
 
 当前是 **0.1.0-alpha.1 开发版**，需要 **Node.js 22 或更新版本**。源码仓库是 [tangyixiao/tangyixiao-workflow](https://github.com/tangyixiao/tangyixiao-workflow)。本版尚未作为 npm 包或产品 Release 发布；`@tangyixiao/workflow` 是项目包名，`tywf` 是命令别名，下面直接使用源码 CLI，不依赖全局命令。
 
@@ -23,6 +23,20 @@ node bin/pwf.mjs status --destination "$skillDir"
 > 用 $tangyixiao-workflow 检查这个项目，先预览接入计划，保留已有 README、工作区和未提交修改
 
 本机发现、实际调用和其他客户端兼容性分别验证；文件落盘不代表所有会话已经加载。[支持范围](docs/client-support.md)
+
+## 给自己的仓库或其他项目写公开文案
+
+在目标仓库直接调用 Skill 即可，无需先运行 `adopt`。先看该项目的贡献指南、模板和近期已接受的同类内容，再根据实际改动起草。例如，给上游项目补了一条安装命令后，可以这样调用：
+
+> 用 $tangyixiao-workflow 阅读这个项目的贡献指南、PR 模板和我的 diff，给这次 README 改动写一个英文 PR 标题和正文。
+
+| 要写的内容 | 读者需要知道什么 |
+| --- | --- |
+| README、仓库 About 和 Wiki | README 给出第一次使用的步骤和预期结果，About 用一句话说明项目用途，Wiki 每页带读者完成一项具体任务。 |
+| PR、commit、issue 和 discussion | PR 说明改动及验证方法，commit 标明单次改动，issue 给出复现条件或使用场景，discussion 提出需要讨论的问题。 |
+| Release 和 GitHub Actions | 发行说明写明本版变化以及获取或升级方式。Actions 用步骤名说明检查什么，摘要告诉读者结果以及失败后该看哪里。 |
+
+起草、核对项目事实和发布后回读的方法见[公开协作写作指南](skills/tangyixiao-workflow/references/public-writing.md)。
 
 ## 接入已有项目
 

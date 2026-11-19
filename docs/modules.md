@@ -7,6 +7,7 @@ the scope. Personal choices from a private conversation are not universal policy
 | Module | Local executable | Guided work / separately verified evidence |
 | --- | --- | --- |
 | Installation | `install`, `status`, `uninstall` | Client discovery and actual Skill invocation |
+| [Public writing](../skills/tangyixiao-workflow/references/public-writing.md) | Available directly through the Skill in any repository | Apply the destination's conventions to README, About, Wiki, Actions output and other public contributions |
 | Project adoption | `adopt`, `check`, `upgrade` | Project tests, representative adoption, project-owned customization |
 | Design | No site generator in this CLI | Real reference research, approved desktop/mobile overview, Chinese typography and visual comparison |
 | Documentation | No generic proof of content correctness | Native README, factual claims, meaningful screenshots, languages/themes, local links and actual examples |

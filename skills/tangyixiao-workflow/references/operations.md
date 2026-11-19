@@ -1,5 +1,9 @@
 # Repository operations mode
 
+For About metadata, Wiki navigation, workflow names, check summaries and bot
+comments, use the [public writing guide](public-writing.md). The existing
+repository determines the publishing surface and local conventions.
+
 Inspect the repository's real stack and existing automation before proposing a
 baseline. GitHub's account-level `.github` community defaults do not automatically
 install workflows, labels, bot configuration, licenses, settings, or this skill in

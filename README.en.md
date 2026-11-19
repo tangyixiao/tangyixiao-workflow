@@ -2,10 +2,9 @@
 
 [简体中文](README.md) · [Get started](docs/getting-started.md) · [Modules and limits](docs/modules.md) · [Client support](docs/client-support.md)
 
-Adopt a project delivery workflow that remains usable next session: a discoverable
-Skill, a dependency-free local CLI, and checked project configuration. Select the
-design, documentation, website, operations, release, video, or resource guidance
-that fits the task; an isolated small edit does not need every module.
+Use this Skill to write a repository README, prepare a pull request, or draft
+release notes. Its local CLI checks an adopted project's configuration, the
+managed section of its AGENTS file, and release candidate files.
 
 This is development version **0.1.0-alpha.1**, requiring **Node.js 22 or newer**.
 Source: [tangyixiao/tangyixiao-workflow](https://github.com/tangyixiao/tangyixiao-workflow).
@@ -33,6 +32,23 @@ or dependency installation is required. After the client discovers it, invoke
 
 Installation, client discovery, actual invocation, and compatibility with other
 clients are separate checks. [Support scope](docs/client-support.md)
+
+## Write for your repository or contribute upstream
+
+Invoke the Skill directly in the target checkout. Running `adopt` is optional.
+Start with the project's contribution guide, templates, and recent accepted
+contributions. For example, after adding an installation command to an upstream
+README, ask:
+
+> Use $tangyixiao-workflow to read this project's contribution guide, PR template, and my diff. Draft an English PR title and description for the README change.
+
+| Where the text appears | What the reader needs |
+| --- | --- |
+| README, repository About, and Wiki | Give a first-time reader steps and an expected result in the README. Describe the project's purpose in one sentence in About. Walk through one task per Wiki page. |
+| Pull requests, commits, issues, and discussions | Explain the change and how to verify it in a PR. Name the individual change in a commit. Give reproduction steps or a use case in an issue. Ask a question contributors can answer in a discussion. |
+| Releases and GitHub Actions | Tell readers what changed and how to get or upgrade the release. Name Actions steps for what they check, and use the summary to show the result and where to look after a failure. |
+
+For drafting, checking claims, and verifying published text, see the [public writing guide](skills/tangyixiao-workflow/references/public-writing.md) (Chinese).
 
 ## Adopt an existing project
 

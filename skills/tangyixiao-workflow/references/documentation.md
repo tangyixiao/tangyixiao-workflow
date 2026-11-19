@@ -1,5 +1,8 @@
 # Documentation mode
 
+Apply the [public writing guide](public-writing.md) to README and Wiki work in
+any repository. Check the destination's established structure and language first.
+
 Write for the receiving project's users and contributors. State its purpose, a
 working way to start, actual support and limitations, and where to get help. Keep
 repository file inventories and maintenance detail out of the primary product pitch.

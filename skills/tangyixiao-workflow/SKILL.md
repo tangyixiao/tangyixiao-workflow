@@ -1,6 +1,6 @@
 ---
 name: tangyixiao-workflow
-description: Use Tangyixiao Workflow for project setup, public release preparation, README or website delivery, demo-video planning, and task resource closeout. Provides safe local adoption and release checks; ordinary edits need only the relevant guidance.
+description: Write or review public repository content, including README, About, Wiki, Actions output, commits, pull requests, issues, discussions and releases in any project. Also supports project setup, website delivery, demo videos, resource closeout and local release checks.
 ---
 
 # Tangyixiao Workflow
@@ -11,6 +11,11 @@ license, and explicit instructions. A sample project is not the identity of ever
 project that adopts it.
 
 ## Locate the executable
+
+For a writing task, start with the [public writing guide](references/public-writing.md).
+It applies in personal repositories, forks and upstream projects, including
+projects with no toolkit configuration. Follow the destination's language,
+templates and contribution rules. Use the CLI when the task calls for a check.
 
 Resolve the directory containing this `SKILL.md` first.
 
@@ -31,6 +36,7 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Any text another person will see in a repository, its metadata, or an automation | [Public writing](references/public-writing.md) | Editorial workflow for drafting, review and publication within scope |
 | New website or substantial visual redesign | [Design](references/design.md) | Guidance; visual research and review use the available tools |
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
 | Repository operations, bots, labels, SEO, distribution | [Operations](references/operations.md) | Adoption/configuration checks; platform settings require separate verification |
@@ -62,8 +68,8 @@ plan. Choose only applicable modules rather than filling every platform feature.
 
 ## Leave a usable result
 
-For public copy, lead with project facts rather than the task conversation. Read
-the documentation/release reference for audience, format, and attribution rules.
+Use the public writing guide for titles, descriptions, comments and other visible
+text. Consult the documentation or release reference for the corresponding format.
 
 Report relevant local checks, CI, merge, deployment, publication, and actual use
 separately. State what was not checked. Preserve useful source and final evidence;
