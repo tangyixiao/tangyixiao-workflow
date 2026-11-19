@@ -1,5 +1,7 @@
 # tangyixiao-workflow project website
-[简体中文](site/index.html) · [English](site/en/index.html)
+[简体中文](https://tangyixiao.github.io/tangyixiao-workflow/) · [English](https://tangyixiao.github.io/tangyixiao-workflow/en/)
+
+The published site uses GitHub Pages. Changes to the site on `main` are checked before deployment. For offline use, open the [local Chinese](site/index.html) or [local English](site/en/index.html) homepage.
 
 Open either HTML file in a browser, or run the following from `project-website/`:
 
