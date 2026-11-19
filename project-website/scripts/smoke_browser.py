@@ -10,6 +10,7 @@ import json
 import os
 import shutil
 import socket
+import struct
 import subprocess
 import sys
 import tempfile
@@ -132,8 +133,16 @@ class Chrome:
 
     def capture(self, directory, name):
         if directory:
+            width, height = self.js("""
+                const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
+                return document.fonts.ready.then(nextFrame).then(() => [innerWidth, innerHeight]);
+            """)
+            data = base64.b64decode(self.cmd("GET", "/screenshot"), validate=True)
+            require(data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24
+                    and data[12:16] == b"IHDR" and struct.unpack(">II", data[16:24]) == (width, height),
+                    f"{name}: expected a {width}x{height} viewport PNG")
             directory.mkdir(parents=True, exist_ok=True)
-            (directory / (name + ".png")).write_bytes(base64.b64decode(self.cmd("GET", "/screenshot")))
+            (directory / f"{width}-{name}.png").write_bytes(data)
 
 
 @contextlib.contextmanager
@@ -154,10 +163,9 @@ def session(driver, binary, width, height, js=True):
         chrome = Chrome(driver + "/session/" + sid)
         try:
             chrome.cmd("POST", "/window/rect", {"width": width, "height": height})
-            if width < 500:
-                # Headless Chrome imposes a minimum desktop window width.
-                chrome.cmd("POST", "/goog/cdp/execute", {"cmd": "Emulation.setDeviceMetricsOverride",
-                    "params": {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": True}})
+            # Use CSS viewport dimensions on every host, including HiDPI desktops.
+            chrome.cmd("POST", "/goog/cdp/execute", {"cmd": "Emulation.setDeviceMetricsOverride",
+                "params": {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": width < 500}})
             yield chrome
         finally:
             chrome.cmd("DELETE", "")
@@ -199,11 +207,11 @@ def log_check(browser):
 
 def execute(site, driver_path, binary, shots, passed):
     with serve(site) as base, webdriver(driver_path) as driver:
-        with session(driver, binary, 1280, 850) as browser:
-            check_pages(browser, base, 1280)
+        with session(driver, binary, 1440, 900) as browser:
+            check_pages(browser, base, 1440)
             passed.append("desktop-8-pages")
             browser.goto(base + "index.html")
-            browser.capture(shots, "desktop-zh")
+            browser.capture(shots, "home-zh")
             browser.key("\ue004")  # Tab
             require(browser.js("return document.activeElement.matches('.skip-link')"), "skip link focus")
             browser.key("\ue007")  # Enter
@@ -216,7 +224,7 @@ def execute(site, driver_path, binary, shots, passed):
             browser.cmd("POST", "/refresh", {})
             require(browser.js("return document.documentElement.dataset.colorMode") == "dark",
                     "dark theme did not persist across language and reload")
-            browser.capture(shots, "desktop-en-dark")
+            browser.capture(shots, "features-en-dark")
             for choice in ("system", "light"):
                 browser.click(".theme-picker summary")
                 browser.click(f'[data-theme-choice="{choice}"]')
@@ -224,14 +232,23 @@ def execute(site, driver_path, binary, shots, passed):
                         f"theme choice {choice}")
             log_check(browser)
             passed.append("desktop-keyboard-locale-themes-console")
-        with session(driver, binary, 320, 750) as browser:
-            check_pages(browser, base, 320)
+        for width, height in ((1280, 850), (768, 900), (320, 750)):
+            with session(driver, binary, width, height) as browser:
+                check_pages(browser, base, width)
+                if width == 768:
+                    browser.goto(base + "index.html")
+                    browser.capture(shots, "home-zh")
+                log_check(browser)
+                passed.append(f"{width}px-8-pages")
+        with session(driver, binary, 390, 844) as browser:
+            check_pages(browser, base, 390)
             passed.append("mobile-8-pages")
             browser.goto(base + "index.html")
-            browser.capture(shots, "mobile-zh")
+            browser.capture(shots, "home-zh")
             browser.click(".menu-toggle")
             require(browser.js("return document.querySelector('.menu-toggle').getAttribute('aria-expanded')") == "true",
                     "mobile menu failed to open")
+            browser.capture(shots, "menu-zh-open")
             browser.key("\ue00c")  # Escape
             require(browser.js("return document.activeElement.matches('.menu-toggle') && document.activeElement.getAttribute('aria-expanded') === 'false'"),
                     "Escape failed to close menu or restore focus")
@@ -239,7 +256,7 @@ def execute(site, driver_path, binary, shots, passed):
             browser.click('.main-nav a[href$="download.html"]')
             language(browser, "en")
             browser.expect_url(base + "en/download.html")
-            browser.capture(shots, "mobile-en")
+            browser.capture(shots, "download-en")
             log_check(browser)
             passed.append("mobile-menu-keyboard-locale-console")
         with session(driver, binary, 390, 780, js=False) as browser:
@@ -257,7 +274,9 @@ def execute(site, driver_path, binary, shots, passed):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", type=Path)
-    parser.add_argument("--screenshots", type=Path)
+    parser.add_argument("--screenshots", type=Path, help="write viewport PNGs under this directory")
+    parser.add_argument("--round", choices=("before", "after"), default="after",
+                        help="screenshot subdirectory (default: after)")
     parser.add_argument("--chromedriver", default=shutil.which("chromedriver"))
     parser.add_argument("--chrome", default=shutil.which("google-chrome") or shutil.which("chromium"))
     args = parser.parse_args()
@@ -267,7 +286,8 @@ def main():
         require(args.chromedriver, "chromedriver not found on PATH")
         site = (args.project / "site").resolve()
         require((site / "index.html").is_file(), "missing site/index.html")
-        execute(site, args.chromedriver, args.chrome, args.screenshots, passed)
+        shots = args.screenshots / args.round if args.screenshots is not None else None
+        execute(site, args.chromedriver, args.chrome, shots, passed)
     except (OSError, ValueError, KeyError, RuntimeError) as exc:
         errors.append(str(exc))
     print(json.dumps({"project": args.project.name, "ok": not errors, "checks": passed,
