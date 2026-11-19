@@ -1,0 +1,14 @@
+{
+  "name": "@tangyixiao/workflow",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "description": "An agent skill for writing project documentation and release notes, with a CLI to check Git tags, verify file hashes and track temporary files.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=22" },
+  "bin": { "tywf": "bin/pwf.mjs" },
+  "scripts": { "test": "node --test --test-concurrency=1", "check": "node bin/pwf.mjs self-check" },
+  "files": ["bin", "lib", "skills", "docs", "examples", "README.md", "README.en.md", "LICENSE", "NOTICE"],
+  "repository": { "type": "git", "url": "https://github.com/tangyixiao/tangyixiao-workflow.git" },
+  "homepage": "https://github.com/tangyixiao/tangyixiao-workflow#readme"
+}

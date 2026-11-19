@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "skill": "tangyixiao-workflow",
+  "evaluationBoundary": "Use local fixtures. Do not edit live client settings, contact registries, publish, call live models, or delete unrelated paths. Report unavailable network/visual evidence instead of fabricating it.",
+  "evals": [
+    {
+      "id": "existing-project-adoption-plan",
+      "prompt": "Use $tangyixiao-workflow on this existing npm project. It has a customized README, AGENTS instructions and uncommitted code changes. Show me how you would adopt the workflow and keep it usable next session. Preview the plan only; do not install anything or change the project yet.",
+      "fixtureRequirements": [
+        "An npm project with package.json",
+        "Existing custom README and AGENTS.md",
+        "A dirty source file"
+      ],
+      "expectedBehaviors": [
+        "Locate the installed runtime or source CLI without assuming a global executable",
+        "Inspect the actual project and select the npm profile",
+        "Use the adoption plan without --apply and preserve all fixture bytes",
+        "Distinguish durable local adoption from current client discovery and live GitHub setup",
+        "Avoid loading all six mode references or installing another toolchain"
+      ]
+    },
+    {
+      "id": "independent-products-preview-release",
+      "prompt": "Use $tangyixiao-workflow to check the local release candidate for Orbit Bridge 0.7.0-rc.1. This repository also contains an independent Retry Helper product with older 0.3.x releases. The candidate says prerelease=false and npmTag=latest. Tell me what must change before publishing; do not write files or change remote releases.",
+      "fixtureRequirements": [
+        "An npm manifest and lockfile for Orbit Bridge",
+        "Declared release identity and stable/preview channel mapping",
+        "A preview candidate with false prerelease and latest npm tag",
+        "An independent Retry Helper history description"
+      ],
+      "expectedBehaviors": [
+        "Read release guidance and run the offline release checker against the candidate",
+        "Report the preview flag and dist-tag mismatches as failed gates",
+        "Preserve Retry Helper identity and reject a blanket historical rename",
+        "State that package internals, installation, remote tag resolution and publication remain unverified",
+        "Do not apply fixes or publish under a read-only request"
+      ]
+    },
+    {
+      "id": "website-direction-and-real-video",
+      "prompt": "Use $tangyixiao-workflow to plan a Chinese/English project website with light and dark themes for this existing app. I have not chosen a layout. First show me a desktop/mobile visual overview before implementation. I also need a real 60 fps MP4 demonstration with landscape and portrait versions for later sharing; do not publish it. Reuse the current workspace and keep temporary media bounded.",
+      "fixtureRequirements": [
+        "Real project purpose and supported-platform notes",
+        "One available application capture labelled with its actual source frame rate",
+        "Existing workspace and scratch location"
+      ],
+      "expectedBehaviors": [
+        "Read design and video references and use actual product content",
+        "Research real references when available and wait for explicit visual-direction approval before new website implementation",
+        "Do not treat silence or a prior unrelated design as approval",
+        "Plan real operations, intentional landscape/portrait composition, subtitles and current platform-spec verification",
+        "Do not relabel 30 fps source motion as verified 60 fps capture or substitute a GIF",
+        "Bound owned scratch and distinguish finish planning from actual cleanup or publication"
+      ]
+    },
+    {
+      "id": "public-release-editorial-boundary",
+      "prompt": "Use $tangyixiao-workflow to edit these public plugin release notes. The page already shows its release title. Keep the real installation and compatibility limits, but make the body useful to people installing the plugin. Do not publish or change versions/tags. The draft repeats its H1, mixes translations sentence by sentence, lists local port-conflict retries and test counts, and describes a personal authorization conversation. Another preview line has features this stable release lacks.",
+      "fixtureRequirements": [
+        "Existing release title and draft body",
+        "Exact release source/asset facts",
+        "A real preview-versus-stable compatibility limitation"
+      ],
+      "expectedBehaviors": [
+        "Read release/documentation guidance and keep project facts as the public subject",
+        "Remove duplicate page title, private task authorization, local debugging chronology and personal machine state",
+        "Use clear changes, installation/upgrade and known-limit headings with concise bullets and meaningful command fences",
+        "Keep complete language sections instead of alternating fragments",
+        "Preserve actual runtime/host requirements, missing preview functionality and unverified real flows",
+        "Use the real decision-maker name only if attribution is necessary, not as a replacement for a task-transcript subject",
+        "Run notes-check while explaining that editorial quality and factual claims still need review",
+        "Do not fabricate checksum attachments, old npm publication, remote edits or successful live tests"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "description": "开发版把可安装的 Skill、本地命令行和项目配置放在一起。接入现有项目时，可以先查看计划，再决定应用哪一项变更。"
+  },
+  "pages": {
+    "home": {
+      "title": "给现有项目接入可检查的工作流程 · {project}"
+    },
+    "features": {
+      "title": "项目特点 · {project}",
+      "description": "开发版把可安装的 Skill、本地命令行和项目配置放在一起。接入现有项目时，可以先查看计划，再决定应用哪一项变更。"
+    },
+    "download": {
+      "title": "开始使用 · {project}",
+      "description": "当前实现位于 feat/installable-workflow，使用 Node.js 22 或更新版本。"
+    },
+    "community": {
+      "title": "参与项目 · {project}",
+      "description": "从这里找到使用说明、已有讨论和项目变更。"
+    }
+  },
+  "nav": {
+    "home": "首页",
+    "features": "项目特点",
+    "download": "开始使用",
+    "community": "参与项目"
+  },
+  "ui": {
+    "skip_link": "跳转到主要内容",
+    "navigation": "主导航",
+    "open_navigation": "打开导航",
+    "close_navigation": "关闭导航",
+    "language": "选择语言",
+    "theme": "选择主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统",
+    "platforms": "支持的平台",
+    "github": "GitHub",
+    "view_image": "查看完整演示图",
+    "feature_more": "查看详情",
+    "download": "阅读开发版指南",
+    "release_notes": "仓库源代码",
+    "documentation": "使用文档",
+    "source": "仓库源代码",
+    "illustration": "使用路径",
+    "license": "Apache-2.0"
+  },
+  "hero": {
+    "title": [
+      "给现有项目接入可检查的工作流程"
+    ],
+    "description": [
+      "开发版把可安装的 Skill、本地命令行和项目配置放在一起。接入现有项目时，可以先查看计划，再决定应用哪一项变更。"
+    ],
+    "primary_action": "阅读开发版指南",
+    "secondary_action": "查看详情"
+  },
+  "preview": {
+    "caption": "使用路径",
+    "tabs": [
+      {
+        "label": "开始使用",
+        "icon": "book"
+      }
+    ],
+    "items": [
+      {
+        "title": "打开开发分支的指南",
+        "description": "当前实现位于 feat/installable-workflow，使用 Node.js 22 或更新版本。",
+        "icon": "book"
+      },
+      {
+        "title": "先检查本地环境",
+        "description": "在开发分支的项目目录运行 node bin/pwf.mjs doctor，然后查看指南中的安装计划。",
+        "icon": "link"
+      }
+    ]
+  },
+  "features": {
+    "title": "项目特点",
+    "groups": [
+      {
+        "title": "查看接入计划",
+        "description": "adopt 命令根据项目类型准备配置，应用后可用 check 核对受管理内容。",
+        "detail": "",
+        "icon": "layers"
+      },
+      {
+        "title": "按任务选参考",
+        "description": "设计、网站、发行和资源收尾都有对应参考。命令行可以从开发分支直接运行。",
+        "detail": "",
+        "icon": "book"
+      }
+    ]
+  },
+  "getting_started": {
+    "title": "开始使用 · {project}",
+    "steps": [
+      {
+        "title": "打开开发分支的指南",
+        "description": "当前实现位于 feat/installable-workflow，使用 Node.js 22 或更新版本。",
+        "icon": "book"
+      },
+      {
+        "title": "先检查本地环境",
+        "description": "在开发分支的项目目录运行 node bin/pwf.mjs doctor，然后查看指南中的安装计划。",
+        "icon": "link"
+      }
+    ]
+  },
+  "community": {
+    "title": "参与 · {project}",
+    "description": "从这里找到使用说明、已有讨论和项目变更。",
+    "links": [
+      {
+        "label": "帮助与反馈",
+        "description": "查看已报告的问题，或描述复现步骤。",
+        "icon": "book"
+      },
+      {
+        "label": "仓库源代码",
+        "description": "查看原项目与维护入口。",
+        "icon": "link"
+      },
+      {
+        "label": "查看项目变更",
+        "description": "查看已有拉取请求或准备贡献。",
+        "icon": "code"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "{copyright}"
+  }
+}

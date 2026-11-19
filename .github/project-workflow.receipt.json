@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "project-workflow-project",
+  "toolkitVersion": "0.1.0-alpha.1",
+  "files": [
+    {
+      "path": ".github/project-workflow.json",
+      "sha256": "19c099a38b215a44b82511d273e77582bace363223b49b06279f3c637ddfa9aa"
+    }
+  ],
+  "blocks": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e3c4ade4ee71effcfdacb04eaa61983cd700e69610b5c11738d34882d83ee374"
+    }
+  ]
+}

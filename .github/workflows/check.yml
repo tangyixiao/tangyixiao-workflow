@@ -1,0 +1,64 @@
+name: Toolkit checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: toolkit-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    name: Node ${{ matrix.node }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest, node: 22}
+          - {os: windows-latest, node: 24}
+          - {os: macos-latest, node: 24}
+    steps:
+      - name: Check out the toolkit source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js for this runner
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run the toolkit tests
+        id: tests
+        run: npm test
+      - name: Check the toolkit source and references
+        id: self_check
+        run: npm run check
+      - name: Preview the npm package contents
+        id: package_preview
+        run: npm pack --dry-run --ignore-scripts
+      - name: Summarize the toolkit checks
+        if: ${{ !cancelled() }}
+        shell: bash
+        env:
+          TESTS: ${{ steps.tests.outcome }}
+          SELF_CHECK: ${{ steps.self_check.outcome }}
+          PACKAGE_PREVIEW: ${{ steps.package_preview.outcome }}
+        run: |
+          if [[ "$TESTS" == failure ]]; then
+            echo 'Tests failed. Open **Run the toolkit tests** for the failing case.'
+          elif [[ "$SELF_CHECK" == failure ]]; then
+            echo 'The source check failed. Open **Check the toolkit source and references** for details.'
+          elif [[ "$PACKAGE_PREVIEW" == failure ]]; then
+            echo 'The package preview failed. Open **Preview the npm package contents** for the npm error.'
+          elif [[ "$PACKAGE_PREVIEW" == success ]]; then
+            echo 'The tests, source check, and npm package preview passed on this runner.'
+          else
+            echo 'Setup stopped before the checks ran. Open the failed checkout or Node.js step.'
+          fi >> "$GITHUB_STEP_SUMMARY"
+  adopted-project:
+    uses: ./.github/workflows/project-check.yml
+    with:
+      toolkit-ref: ${{ github.sha }}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "toolkitVersion": "0.1.0-alpha.1",
+  "repository": "tangyixiao/tangyixiao-workflow",
+  "profile": "npm",
+  "resources": {
+    "freeSpaceReserveGiB": 10,
+    "temporaryGrowthReviewGiB": 1,
+    "optionalGrowthLimitGiB": 2,
+    "maxLogMiB": 20,
+    "maxHeavyJobs": 1
+  }
+}
