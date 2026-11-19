@@ -23,6 +23,29 @@ follow page transitions and how the team studied several widths.
 [Entertainment Weekly case study](https://v3.danmall.com/articles/responsive-mobile-entertainment-weekly/) ·
 [Vercel homepage case study](https://rauno.me/craft/vercel)
 
+## Localize the composition
+
+Use the same product facts, identity and destinations across languages. Write
+the lead in each language for its reader, then set the measure, font fallback,
+weight, line height and wrapping against the actual words. Avoid locking a
+Chinese headline to English tracking or fitting translated buttons to the width
+of one language. Preserve the current task and theme when switching language.
+Keep useful text and controls in HTML, including file paths and commands.
+
+For reference research, compare the *same product* in two locales at the same
+viewport. Apple presents the same Mac mini product image and buying action with
+a separately written Chinese headline. Adobe Spectrum documents different line
+heights for Latin and CJK body text. These are examples of decisions to test on
+the project's own copy. [Apple US](https://www.apple.com/mac-mini/) ·
+[Apple China](https://www.apple.com.cn/mac-mini/) ·
+[Spectrum body type](https://spectrum.adobe.com/page/body/)
+
+Distinguish a live product, a recording of an interaction, and a static design
+shot. Learn one mechanism from each relevant reference. A recognizable product
+image can establish the subject; a genuine output can explain what a tool does.
+Choose a brand color, a contrasting action color and restrained state colors;
+pair state color with words or icons. Check dark-mode contrast and reduced motion.
+
 Inspect the project's real purpose, content, current UI, constraints, and any
 approved design evidence. Research relevant real websites and inspect their pages;
 repository stars or lists of URLs do not establish visual quality. Use one primary
@@ -46,7 +69,7 @@ permissions and asset terms before introducing a library. A static page can
 reuse the renderer's shared navigation, links and native controls.
 
 For substantial visual changes, capture a baseline and a revised render at
-1440, 768 and 390 CSS pixels, with the same viewport height, locale, theme,
+1440, 768 and 390 CSS pixels for both language editions of the same page, with the same viewport height, locale, theme,
 content and interaction state for each comparison. Use the existing browser
 suite (Playwright, WebDriver or the host browser). Inspect each image at
 reading size. Check line breaks, alignment, pacing, contrast, hierarchy and

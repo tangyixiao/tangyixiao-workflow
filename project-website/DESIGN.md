@@ -26,6 +26,14 @@ journey and a stable, direct link for the second.
 
 ## Design decisions for a substantial change
 
+The homepage should identify Tangyixiao Workflow before introducing a case
+from another project. Start a comparison with real toolkit output, for example
+the files a first adoption would create or update. If an original illustration
+accompanies the example, keep filenames, commands and results in real text.
+Keep the key action recognizable in either language. Try independent Chinese
+semantic line breaks and English line lengths, with controls sized to their
+labels. Compare the same homepage in both languages on all three review widths.
+
 1. Pick one thing a reader should understand or do in the first viewport.
    Bring an exact excerpt, a real output, or a legible crop that demonstrates it.
    Wireframe alternative *reading sequences* with that same material.

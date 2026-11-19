@@ -176,7 +176,8 @@ def require(ok, message):
         raise ValueError(message)
 
 
-def check_pages(browser, base, width):
+def check_pages(browser, base, width, shots=None):
+    home_mode = None
     for locale in ("", "en/"):
         for filename in PAGES:
             browser.goto(base + locale + filename)
@@ -184,7 +185,7 @@ def check_pages(browser, base, width):
               const h = document.querySelector('main h1');
               return {heading:h && h.innerText.trim(), width:innerWidth,
                       scroll:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth),
-                      lang:document.documentElement.lang,
+                      lang:document.documentElement.lang, mode:document.documentElement.dataset.colorMode,
                       missing:[...document.images].filter(i => i.loading !== "lazy" && i.getClientRects().length && (!i.complete || !i.naturalWidth)).length};
             """)
             require(state["heading"] and state["lang"] == ("en" if locale else "zh-CN"),
@@ -192,6 +193,12 @@ def check_pages(browser, base, width):
             require(state["width"] == width and state["scroll"] <= width + 1,
                     f"{locale}{filename}: viewport/overflow {state}")
             require(not state["missing"], f"{locale}{filename}: unloaded image")
+            if shots is not None and filename == "index.html":
+                mode = state["mode"]
+                require(mode in ("light", "dark") and (home_mode is None or mode == home_mode),
+                        f"{width}px: homepage screenshots need the same theme ({home_mode}, {mode})")
+                home_mode = mode
+                browser.capture(shots, "home-en" if locale else "home-zh")
 
 
 def language(browser, code):
@@ -208,10 +215,9 @@ def log_check(browser):
 def execute(site, driver_path, binary, shots, passed):
     with serve(site) as base, webdriver(driver_path) as driver:
         with session(driver, binary, 1440, 900) as browser:
-            check_pages(browser, base, 1440)
+            check_pages(browser, base, 1440, shots)
             passed.append("desktop-8-pages")
             browser.goto(base + "index.html")
-            browser.capture(shots, "home-zh")
             browser.key("\ue004")  # Tab
             require(browser.js("return document.activeElement.matches('.skip-link')"), "skip link focus")
             browser.key("\ue007")  # Enter
@@ -234,17 +240,13 @@ def execute(site, driver_path, binary, shots, passed):
             passed.append("desktop-keyboard-locale-themes-console")
         for width, height in ((1280, 850), (768, 900), (320, 750)):
             with session(driver, binary, width, height) as browser:
-                check_pages(browser, base, width)
-                if width == 768:
-                    browser.goto(base + "index.html")
-                    browser.capture(shots, "home-zh")
+                check_pages(browser, base, width, shots if width == 768 else None)
                 log_check(browser)
                 passed.append(f"{width}px-8-pages")
         with session(driver, binary, 390, 844) as browser:
-            check_pages(browser, base, 390)
+            check_pages(browser, base, 390, shots)
             passed.append("mobile-8-pages")
             browser.goto(base + "index.html")
-            browser.capture(shots, "home-zh")
             browser.click(".menu-toggle")
             require(browser.js("return document.querySelector('.menu-toggle').getAttribute('aria-expanded')") == "true",
                     "mobile menu failed to open")

@@ -35,12 +35,16 @@ before editing it.
 python3 scripts/smoke_browser.py . --screenshots ../work/website-review --round before
 ```
 
-Open the three `*-home-zh.png` files in `../work/website-review/before/`.
-They show the same Chinese homepage at 1440 × 900, 768 × 900 and 390 × 844 CSS
-pixels. The other three images show the English features page in dark mode,
-the open mobile menu and the English download page reached through that menu.
-Record the filename and the visible issue, such as a Chinese heading wrapping
-over a button at 390 px.
+In `../work/website-review/before/`, open `390-home-zh.png` beside
+`390-home-en.png`, then repeat at 768 and 1440 px. Each pair uses the same
+browser session and theme. The viewports are 390 × 844, 768 × 900 and
+1440 × 900 CSS pixels.
+
+Read each headline and find the main action in its own language. Check where
+Chinese phrases break across lines, how much space English labels take in the
+navigation, and whether each layout gives the main action enough room. Record
+the filename and the visible issue. Three more images show the English features
+page in dark mode, the open Chinese mobile menu and the English download page.
 
 After the edit, render the site and capture the same views.
 
@@ -52,10 +56,10 @@ python3 scripts/smoke_browser.py . --screenshots ../work/website-review --round 
 
 Check that the browser command reports `"ok": true`. Open matching files in
 `before/` and `after/` side by side. Compare heading wraps, navigation, button
-placement and the state affected by the edit. A repeated capture replaces the
-six files for that round. For changes outside these views, open the affected
+placement and the state affected by the edit in each language. A repeated capture
+replaces the nine files for that round. For changes outside these views, open the affected
 page or control and capture that state at the same width in both rounds.
 
 On a successful **Validate the bilingual project website** run, download
-`website-screenshots` from the run summary. It contains the six `after/` images
+`website-screenshots` from the run summary. It contains the nine `after/` images
 for that revision and is retained for three days.
