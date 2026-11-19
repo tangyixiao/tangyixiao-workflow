@@ -33,10 +33,11 @@
 .page-home .site-header::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0 0 -1px;
   z-index: -1;
+  border-bottom: 1px solid #ffffff47;
   box-shadow: 0 0 0 100vmax var(--cobalt);
-  clip-path: inset(0 -100vmax -1px);
+  clip-path: inset(0 -100vmax);
 }
 .page-home .brand {
   display: inline-flex;
@@ -176,7 +177,7 @@
 #advisories h3 { font-size: 14px; }
 #advisories ul { padding-left: 20px; margin: 3px 0; }
 .report-foot { margin-top: 13px; color: var(--muted); font-size: 12px; line-height: 1.55; }
-.report-foot a, .bench-more a { font-weight: 650; text-decoration: none; }
+.report-foot a, .bench-more a { font-weight: 650; text-decoration: none; white-space: nowrap; }
 .report-foot a:hover, .bench-more a:hover, .record:hover { text-decoration: underline; }
 .pending, .bench-fallback { padding: 14px 0; font-size: 15px; color: var(--muted); }
 .report pre { white-space: pre-wrap; }
