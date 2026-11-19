@@ -77,4 +77,4 @@ Skill 负责发现和调用，项目配置负责跨会话留存，核心仓库�
 
 ## 项目网站
 
-下载或克隆仓库后，用浏览器打开[中文首页](project-website/site/index.html)或 [English homepage](project-website/site/en/index.html)。两个版本都可以离线阅读。
+在线阅读[中文网站](https://tangyixiao.github.io/tangyixiao-workflow/)或 [English website](https://tangyixiao.github.io/tangyixiao-workflow/en/)。下载源码后，也可以打开[本地中文首页](project-website/site/index.html)或[本地英文首页](project-website/site/en/index.html)。

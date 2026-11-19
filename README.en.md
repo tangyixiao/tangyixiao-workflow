@@ -102,4 +102,4 @@ Referenced projects and third-party material retain their own rights and attribu
 
 ## Project website
 
-Download or clone this repository, then open the [English homepage](project-website/site/en/index.html) or [中文首页](project-website/site/index.html) in your browser. Both versions work offline.
+Read the [English website](https://tangyixiao.github.io/tangyixiao-workflow/en/) or [中文网站](https://tangyixiao.github.io/tangyixiao-workflow/). After downloading the source, you can also open the [local English homepage](project-website/site/en/index.html) or [local Chinese homepage](project-website/site/index.html).
