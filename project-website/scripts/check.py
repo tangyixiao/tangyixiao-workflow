@@ -130,6 +130,8 @@ def inspect(project, budget):
                 for token in SAMPLE_COPY:
                     if token.lower() in html.lower():
                         errors.append(f"{rel}: stale sample {token!r}")
+            if name == "tangyixiao-workflow" and "feat/installable-workflow" in html:
+                errors.append(f"{rel}: public instructions still refer to the old implementation branch")
             refs.extend((path, url, tag, key) for tag, key, url in page.refs)
     for role, translations in titles.items():
         if len(translations) < len(LANGUAGES):

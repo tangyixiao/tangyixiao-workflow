@@ -1,9 +1,10 @@
 # Alpha validation scope
 
-The first implementation was exercised on Windows with an existing Node.js
-26.9.0 runtime. The source contains a Linux / Windows / macOS CI matrix and calls
-the reusable project workflow against this adopted repository; only an actual
-successful workflow run establishes the corresponding hosted result.
+PR #1 merged to `main` on 2026-11-19. Linux (Node 22), Windows (Node 24),
+macOS (Node 24) and the reusable project check passed on merge commit
+`d2b1698`. The website check passed on the PR revision with the same source tree.
+[Main CI](https://github.com/tangyixiao/tangyixiao-workflow/actions/runs/44529619254) ·
+[Website CI](https://github.com/tangyixiao/tangyixiao-workflow/actions/runs/44528848459)
 
 ## Local behavior
 

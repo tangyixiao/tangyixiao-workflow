@@ -1,22 +1,22 @@
 {
   "meta": {
-    "description": "The development version pairs an installable skill with a local CLI and project configuration. Preview a change plan before choosing which changes to apply."
+    "description": "Use the Skill in a repository to draft a README, a pull request or release notes in the project's style. The local CLI can check project configuration, Git tags and release file hashes."
   },
   "pages": {
     "home": {
-      "title": "Bring a checkable workflow to an existing project · {project}"
+      "title": "Write project docs and check release files · {project}"
     },
     "features": {
       "title": "Features · {project}",
-      "description": "The development version pairs an installable skill with a local CLI and project configuration. Preview a change plan before choosing which changes to apply."
+      "description": "Call the Skill for writing tasks. Use the local CLI when a project needs ongoing configuration checks or is preparing a release."
     },
     "download": {
       "title": "Get started · {project}",
-      "description": "The implementation is on feat/installable-workflow and requires Node.js 22 or newer."
+      "description": "Download or clone the source from main. Run these steps from the toolkit root with Node.js 22 or newer and Git."
     },
     "community": {
       "title": "Community · {project}",
-      "description": "Find usage guidance, follow discussions and review changes to this project."
+      "description": "Report problems and suggest improvements in GitHub Issues, or review code and documentation in Pull Requests."
     }
   },
   "nav": {
@@ -39,25 +39,25 @@
     "github": "GitHub",
     "view_image": "View full illustration",
     "feature_more": "Explore features",
-    "download": "Read the development guide",
+    "download": "Read the install guide on GitHub",
     "release_notes": "Source repository",
-    "documentation": "Documentation",
+    "documentation": "English README",
     "source": "Source repository",
-    "illustration": "First steps",
+    "illustration": "Start locally",
     "license": "Apache-2.0"
   },
   "hero": {
     "title": [
-      "Bring a checkable workflow to an existing project"
+      "Write project docs and check release files"
     ],
     "description": [
-      "The development version pairs an installable skill with a local CLI and project configuration. Preview a change plan before choosing which changes to apply."
+      "Use the Skill in a repository to draft a README, a pull request or release notes in the project's style. The local CLI can check project configuration, Git tags and release file hashes."
     ],
-    "primary_action": "Read the development guide",
-    "secondary_action": "Explore features"
+    "primary_action": "Read the install guide on GitHub",
+    "secondary_action": "Explore use cases"
   },
   "preview": {
-    "caption": "First steps",
+    "caption": "Start locally",
     "tabs": [
       {
         "label": "Get started",
@@ -66,13 +66,13 @@
     ],
     "items": [
       {
-        "title": "Read the development guide",
-        "description": "The implementation is on feat/installable-workflow and requires Node.js 22 or newer.",
+        "title": "Check your environment",
+        "description": "Run node bin/pwf.mjs doctor from the toolkit root to see the Node.js and Git versions.",
         "icon": "book"
       },
       {
-        "title": "Check the environment",
-        "description": "Run node bin/pwf.mjs doctor in the development checkout, then inspect the installation plan in the guide.",
+        "title": "Install and invoke the Skill",
+        "description": "Open docs/getting-started.md in your checkout for installation steps. Then call $tangyixiao-workflow in the target repository.",
         "icon": "link"
       }
     ]
@@ -81,15 +81,15 @@
     "title": "Project features",
     "groups": [
       {
-        "title": "Preview adoption",
-        "description": "The adopt command prepares a plan for the chosen project profile. Use check afterwards to inspect managed content.",
-        "detail": "",
+        "title": "Draft a README or pull request",
+        "description": "Call $tangyixiao-workflow in the target repository. Ask it to use the contribution guide, PR template and your changes to draft a pull request.",
+        "detail": "You can use the Skill without running adopt. It can also draft release notes for the people who use the project.",
         "icon": "layers"
       },
       {
-        "title": "Choose guidance for the task",
-        "description": "Read targeted references for design, websites, releases and resource cleanup. Run the CLI directly from the development branch.",
-        "detail": "",
+        "title": "Check configuration and release files",
+        "description": "Run adopt to preview changes. Once applied, use check to verify the project configuration and the managed section of AGENTS.",
+        "detail": "Before a release, use release-check to verify the candidate version, Git tag and SHA-256 hashes of the declared files offline.",
         "icon": "book"
       }
     ]
@@ -98,34 +98,34 @@
     "title": "Get started · {project}",
     "steps": [
       {
-        "title": "Read the development guide",
-        "description": "The implementation is on feat/installable-workflow and requires Node.js 22 or newer.",
+        "title": "Check your environment",
+        "description": "Run node bin/pwf.mjs doctor. Look for PASS doctor and the detected Node.js and Git versions.",
         "icon": "book"
       },
       {
-        "title": "Check the environment",
-        "description": "Run node bin/pwf.mjs doctor in the development checkout, then inspect the installation plan in the guide.",
+        "title": "Install from the local guide",
+        "description": "Open docs/getting-started.md in your checkout. Follow the commands to preview the install, apply it and check its status. Start a new Codex session in your project and call $tangyixiao-workflow.",
         "icon": "link"
       }
     ]
   },
   "community": {
     "title": "Community · {project}",
-    "description": "Find usage guidance, follow discussions and review changes to this project.",
+    "description": "Report problems and suggest improvements in GitHub Issues, or review code and documentation in Pull Requests.",
     "links": [
       {
-        "label": "Help and feedback",
-        "description": "Browse existing reports or describe a reproducible problem.",
+        "label": "Browse reported issues",
+        "description": "Look for a matching problem and read existing replies.",
         "icon": "book"
       },
       {
-        "label": "Source repository",
-        "description": "Find the project and its maintenance links.",
+        "label": "Suggest an improvement",
+        "description": "Open an issue describing what you want to do and where you get stuck.",
         "icon": "link"
       },
       {
         "label": "Review changes",
-        "description": "Review open pull requests or prepare a contribution.",
+        "description": "Read the code, documentation and review comments in pull requests.",
         "icon": "code"
       }
     ]
