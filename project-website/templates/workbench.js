@@ -210,6 +210,10 @@ document.querySelectorAll("a[data-video]").forEach((link) => {
   });
 });
 video.addEventListener("error", () => { mediaError.hidden = false; });
+// Native video controls can start playback after the dialog has already closed.
+video.addEventListener("play", () => {
+  if (!player.open) video.pause();
+});
 get("close").addEventListener("click", () => player.close());
 player.addEventListener("close", () => video.pause());
 player.addEventListener("click", (event) => {

@@ -300,6 +300,33 @@ def check_workbench(browser, base, first, second):
         !document.querySelector('#rules li')"""), f"{second}: missing title validation")
 
 
+def check_late_play(browser):
+    browser.click("[data-video]")
+    browser.wait(lambda: browser.js("""return document.querySelector('#player').open &&
+        !document.querySelector('#terminal-video').paused"""), "recording did not resume when reopened")
+    browser.js("document.querySelector('#terminal-video').pause()")
+    browser.click("#player button")
+    browser.wait(lambda: browser.js("""return !document.querySelector('#player').open &&
+        document.querySelector('#terminal-video').paused"""), "expected a closed, paused recording")
+    # Replay the delayed native-control request after closing, independently of
+    # the browser's click/double-click delay. play() can abort when the guard pauses it.
+    state = browser.js("""
+        const video = document.querySelector('#terminal-video'), dialog = document.querySelector('#player');
+        const before = video.currentTime;
+        return new Promise(resolve => {
+            const timeout = setTimeout(() => resolve({sawPlay: false}), 3000);
+            video.addEventListener('play', () => {
+                clearTimeout(timeout);
+                setTimeout(() => resolve({sawPlay: true, closed: !dialog.open, paused: video.paused,
+                    drift: Math.abs(video.currentTime - before)}), 450);
+            }, {once: true});
+            video.play().catch(() => {});
+        });
+    """)
+    require(state["sawPlay"] and state["closed"] and state["paused"] and state["drift"] < .1,
+            f"late play request after close must leave the recording paused at the same position: {state}")
+
+
 def check_recording(browser, base):
     require(browser.js("""return !document.querySelector('#terminal-video').currentSrc &&
         !document.querySelector('#terminal-video').getAttribute('src')"""),
@@ -333,6 +360,8 @@ def check_recording(browser, base):
     browser.click("#player button")
     browser.wait(lambda: browser.js("""return !document.querySelector('#player').open &&
         document.querySelector('#terminal-video').paused"""), "closing the recording must stop playback")
+    if not error:
+        check_late_play(browser)
     return outcome
 
 
