@@ -1,6 +1,8 @@
 """Check project website copies of the Tangyixiao schema-2 template, offline."""
 import argparse
+import hashlib
 import json
+import mimetypes
 import re
 import subprocess
 import sys
@@ -12,6 +14,14 @@ from xml.etree import ElementTree
 PAGES = {"home": "index.html", "features": "features.html",
          "download": "download.html", "community": "community.html"}
 LANGUAGES = {"zh-CN": "", "en": "en"}
+# The three reviewed terminal recordings total about 7 MiB. Only those paths
+# use the 8 MiB allowance; HTML, scripts, styles and images share the core limit.
+RECORDINGS = {
+    "media/terminal-session.mp4": "5b344a81eac1bc3ec6dbf55c21a893439d89e872b91875a3d949ce9c2f705a70",
+    "media/terminal-session-short.mp4": "b87b65339dbdce6835e843c8b3565ec9c47137a01c973aca35b1b2feea952398",
+    "media/terminal-session-vertical.mp4": "3c3b5120764e50c630530101e50b1ef8bdc24d5366038b725b414e0ca0ed2fb3",
+}
+RECORDING_BUDGET = 8 * 1024 * 1024
 SAMPLE_COPY = (
     "OJ-NEXUS-v1.0.4.apk", "One place for competitive programming",
     "Keep your online judges together and focus on each problem.",
@@ -179,10 +189,40 @@ def inspect(project, budget):
                     ids[target] = extra.ids
             if unquote(url.fragment) not in ids[target]:
                 errors.append(f"{pathlabel}: missing fragment {raw_url!r}")
-    site_bytes = sum(p.stat().st_size for p in site.rglob("*") if p.is_file())
-    if site_bytes > budget * 1024:
-        errors.append(f"site exceeds {budget} KiB ({site_bytes} bytes)")
-    return {"project": name, "ok": not errors, "pages": len(parsed), "site_bytes": site_bytes,
+    core_bytes = media_bytes = 0
+    recordings = set()
+    for asset in site.rglob("*"):
+        if not asset.is_file():
+            continue
+        rel = asset.relative_to(site).as_posix()
+        size = asset.stat().st_size
+        if rel in RECORDINGS:
+            recordings.add(rel)
+            media_bytes += size
+            if asset.is_symlink() or not asset.resolve().is_relative_to(site):
+                errors.append(f"{rel}: recording must be a local site file")
+                continue
+            if size <= RECORDING_BUDGET:
+                digest = hashlib.sha256()
+                with asset.open("rb") as stream:
+                    for chunk in iter(lambda: stream.read(65536), b""):
+                        digest.update(chunk)
+                if digest.hexdigest() != RECORDINGS[rel]:
+                    errors.append(f"{rel}: SHA-256 differs from the reviewed recording")
+        else:
+            core_bytes += size
+            kind = mimetypes.guess_type(rel)[0] or ""
+            if rel.startswith("media/") or kind.startswith(("audio/", "video/")):
+                errors.append(f"{rel}: unexpected media asset")
+    if name == "tangyixiao-workflow":
+        for rel in sorted(RECORDINGS.keys() - recordings):
+            errors.append(f"{rel}: missing terminal recording")
+    if core_bytes > budget * 1024:
+        errors.append(f"site excluding recordings exceeds {budget} KiB ({core_bytes} bytes)")
+    if media_bytes > RECORDING_BUDGET:
+        errors.append(f"recordings exceed 8 MiB ({media_bytes} bytes)")
+    return {"project": name, "ok": not errors, "pages": len(parsed),
+            "site_bytes": core_bytes + media_bytes, "core_bytes": core_bytes, "media_bytes": media_bytes,
             "render_consistent": check.returncode == 0, "local_references": local_count,
             "external_references_unfetched": remote_count, "errors": errors}
 

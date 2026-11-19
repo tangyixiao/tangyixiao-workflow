@@ -1,10 +1,10 @@
 {
   "meta": {
-    "description": "在目标仓库调用 Skill，按项目惯例起草 README、PR 或发行说明。随附的本地 CLI 可以检查项目配置、Git 标签和发行文件的哈希。"
+    "description": "在浏览器中检查发行草稿，复制到自己的 Codex 会话，或观看一次真实的终端操作。"
   },
   "pages": {
     "home": {
-      "title": "写项目文档，检查候选发行文件 · {project}"
+      "title": "亲手检查一份发行说明 · {project}"
     },
     "features": {
       "title": "项目特点 · {project}",

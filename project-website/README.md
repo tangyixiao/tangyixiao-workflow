@@ -17,8 +17,20 @@ python3 scripts/render_site.py
 python3 scripts/check.py
 ```
 
-The eight committed HTML pages work without JavaScript. JavaScript adds the mobile
-menu and remembers the appearance choice. CI also tests keyboard navigation, all
+Both homepages include an editable release-note workbench. Checks run in the
+browser. Copying a task prepares text to paste into a separate Codex session.
+The site offers the redacted PowerShell recording in [landscape](site/media/terminal-session.mp4),
+[portrait](site/media/terminal-session-vertical.mp4) and a [short edit](site/media/terminal-session-short.mp4).
+The full recording includes the command, the model reply and the separate test run.
+The short edit skips waiting time. The media files are requested on demand.
+The site check verifies the filenames and SHA-256 hashes of these approved
+exports, with an 8 MiB combined media budget. Review the recording for private
+terminal suggestions before updating the corresponding hash for a replacement.
+
+The eight pages remain readable without JavaScript. JavaScript runs draft checks,
+adds the mobile menu and remembers the appearance choice. The renderer derives
+the browser rule implementation from the repository's `lib/notes.mjs`.
+CI also tests keyboard navigation, all
 eight routes, theme selection and responsive layout using Chrome and ChromeDriver.
 See `NOTICE` and `LICENSE.template` for the template provenance.
 

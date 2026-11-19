@@ -1,0 +1,72 @@
+{
+  "identity": "A Codex skill and local tools for repository maintenance",
+  "title": "Try a release-note check",
+  "intro": "Edit a line and see which finding changes.\nThe checks run here in your browser.",
+  "editor": "Your draft",
+  "sample": "Editable sample text",
+  "titleLabel": "Release title",
+  "bodyLabel": "Body (Markdown)",
+  "run": "Check notes",
+  "copy": "Copy for Codex",
+  "copyHint": "Paste the copied task into your own Codex chat and send it to get an AI rewrite.",
+  "results": "Check results",
+  "advice": "Editorial suggestions",
+  "scope": "Three general publishing checks. Review the writing and verify product claims separately.",
+  "source": "Read the rules ↗",
+  "about": "Tangyixiao Workflow also drafts PRs to fit your repo and checks release versions, tags and file hashes locally.",
+  "install": "Install guide",
+  "video": "Terminal recording",
+  "terminal": "Recorded in an actual terminal session",
+  "download": "Download video",
+  "close": "Close recording",
+  "seedTitle": "Sample project v1.2",
+  "seedNotes": "# Sample project v1.2\n\nAs requested by the user, this release adds CSV export.",
+  "manual": "Copy the task below",
+  "fallback": "Enable JavaScript to check a draft here, or run the local command in the toolkit directory to check a Markdown file.",
+  "shortVideo": "36-second excerpt",
+  "verticalVideo": "Portrait recording",
+  "tests": "Rule tests",
+  "mediaError": "The browser could not play this recording. Use the link below to download it.",
+  "messages": {
+    "pass": "Pass",
+    "fail": "Review",
+    "stale": "Ready to recheck",
+    "staleMessage": "The draft has changed. Run the check again to see its current results.",
+    "missing": "Input needed",
+    "needTitle": "Enter a release title.",
+    "needNotes": "Enter the release notes.",
+    "writing": "Your editable draft",
+    "copied": "Task, draft and findings copied.",
+    "manualHint": "Clipboard access was unavailable. The task is selected for manual copying.",
+    "noIssues": "All general checks passed.",
+    "taskIntro": "Use $tangyixiao-workflow to revise these release notes for maintainers. Read this repository’s contribution guidance, release conventions and actual changes. Preserve verified facts, verify the findings, and return a revised draft with any missing evidence called out.",
+    "findings": "Findings",
+    "suggestions": "Editorial suggestions",
+    "categories": {
+      "notes-no-duplicate-title": [
+        "Duplicate title",
+        "The opening heading repeats the release title. Remove it and start with a useful change.",
+        "The opening heading does not repeat the release title."
+      ],
+      "notes-no-private-instructions": [
+        "Private instructions",
+        "The draft mentions a private instruction or approval. Describe the product change directly.",
+        "No private instruction or approval wording matched the rule."
+      ],
+      "notes-no-private-machine-state": [
+        "Private machine state",
+        "The draft mentions private preview state. Move that detail into the task record.",
+        "No private machine-state wording matched the rule."
+      ]
+    },
+    "advisories": {
+      "local-debug-history": "Move local debugging history into a development record unless it explains a user-facing issue.",
+      "validation-in-main-copy": "Keep test evidence concise and linked or folded. Lead with changes and installation impact.",
+      "delivery-report-in-main-copy": "Move evidence boundaries into verification records and keep concrete user-facing limitations in the notes."
+    },
+    "storageUnavailable": "The other language opens in a new tab. Your edited draft stays here for copying.",
+    "findingOne": "{n} finding",
+    "findingsMany": "{n} findings",
+    "allGood": "All {n} checks pass"
+  }
+}

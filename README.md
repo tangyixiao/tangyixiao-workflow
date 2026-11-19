@@ -77,4 +77,4 @@ Skill 负责发现和调用，项目配置负责跨会话留存，核心仓库�
 
 ## 项目网站
 
-在线阅读[中文网站](https://tangyixiao.github.io/tangyixiao-workflow/)或 [English website](https://tangyixiao.github.io/tangyixiao-workflow/en/)。下载源码后，也可以打开[本地中文首页](project-website/site/index.html)或[本地英文首页](project-website/site/en/index.html)。
+在[中文试写页](https://tangyixiao.github.io/tangyixiao-workflow/)编辑发行说明，点“检查”查看当前草稿的问题，再将整理好的任务复制到自己的 Codex 会话。页内可以观看[真实终端录像](https://tangyixiao.github.io/tangyixiao-workflow/media/terminal-session.mp4)，也可[打开英文版](https://tangyixiao.github.io/tangyixiao-workflow/en/)。下载源码后，[本地中文首页](project-website/site/index.html)和[本地英文首页](project-website/site/en/index.html)均可打开。

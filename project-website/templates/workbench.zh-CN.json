@@ -1,0 +1,72 @@
+{
+  "identity": "装进 Codex 的项目维护 Skill ＋ 本地检查工具",
+  "title": "亲手检查一份发行说明",
+  "intro": "改一行正文，看看哪条提示会消失。\n检查在浏览器本地运行。",
+  "editor": "试写区",
+  "sample": "预填内容是可编辑的演示文本",
+  "titleLabel": "发行标题",
+  "bodyLabel": "正文（Markdown）",
+  "run": "检查",
+  "copy": "复制给 Codex",
+  "copyHint": "复制后，粘贴到你自己的 Codex 对话并发送，即可让 AI 帮你改写。",
+  "results": "检查结果",
+  "advice": "编辑建议",
+  "scope": "三项通用发布检查。文字质量和功能声明仍需人工核实。",
+  "source": "查看规则源码 ↗",
+  "about": "Tangyixiao Workflow 也能按项目模板起草 PR，并在本地核对发版的标签、版本和文件哈希。",
+  "install": "安装指南",
+  "video": "真实终端录屏",
+  "terminal": "录制于实际终端会话",
+  "download": "下载录像",
+  "close": "关闭录像",
+  "seedTitle": "示例项目 v1.2",
+  "seedNotes": "# 示例项目 v1.2\n\n按照用户要求，新增了 CSV 导出。",
+  "manual": "复制下方任务文字",
+  "fallback": "启用 JavaScript 即可在这里检查草稿，或在工具包目录用本地命令检查 Markdown 文件。",
+  "shortVideo": "36 秒节选",
+  "verticalVideo": "竖版录像",
+  "tests": "查看规则测试",
+  "mediaError": "浏览器未能播放这段录像。可使用下方链接下载原片。",
+  "messages": {
+    "pass": "通过",
+    "fail": "待改",
+    "stale": "等待检查",
+    "staleMessage": "草稿已修改。点击“检查”，查看当前文字的结果。",
+    "missing": "材料未填全",
+    "needTitle": "请填写发行标题。",
+    "needNotes": "请填写正文。",
+    "writing": "个人草稿 · 可继续编辑",
+    "copied": "已复制任务、当前草稿和检查发现。",
+    "manualHint": "浏览器未能写入剪贴板。已选中任务文字，可手动复制。",
+    "noIssues": "通用规则全部通过。",
+    "taskIntro": "请使用 $tangyixiao-workflow，参考当前仓库的贡献指南、发行约定和实际改动，为维护者修改以下发行说明。保留能从仓库证实的事实。先核实检查发现，给出修订稿并标明仍缺的依据。",
+    "findings": "检查发现",
+    "suggestions": "编辑建议",
+    "categories": {
+      "notes-no-duplicate-title": [
+        "正文标题",
+        "正文首行重复了发行标题。可以删除首行，从改动本身写起。",
+        "正文首行没有重复发行标题。"
+      ],
+      "notes-no-private-instructions": [
+        "内部指令",
+        "正文提及私人指令或审批经过。可以直接描述产品改了什么。",
+        "未发现规则匹配的私人指令或审批措辞。"
+      ],
+      "notes-no-private-machine-state": [
+        "个人机器状态",
+        "正文写入了私人机器的预览状态。将其移至任务记录。",
+        "未发现规则匹配的个人机器状态。"
+      ]
+    },
+    "advisories": {
+      "local-debug-history": "本地排错经过可移到开发记录。若它能解释用户会遇到的问题，可保留必要部分。",
+      "validation-in-main-copy": "把测试依据写短，必要时提供链接或折叠。正文优先说明变化和安装影响。",
+      "delivery-report-in-main-copy": "证据边界可放在验证记录中，发行正文保留具体的使用限制。"
+    },
+    "storageUnavailable": "另一种语言会在新标签页打开。当前草稿保留在这里，可随时复制。",
+    "findingOne": "{n} 项待改",
+    "findingsMany": "{n} 项待改",
+    "allGood": "{n} 项均通过"
+  }
+}
