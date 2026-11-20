@@ -33,3 +33,19 @@
 软件用户、管理员、账号所有者是产品里的角色，可以直接写，例如“只有仓库管理员可以修改此设置”。避免把协作对话写进产品说明。假设差异只补充了 README 里的依赖说明，PR 标题可写“在快速开始中列出构建依赖”，正文说明新增哪项依赖、在哪一步需要它。评审者由此能直接对照差异。“按用户要求完善文档”略去了实际改动。
 
 贡献署名、决定出处、许可证或致谢需要指明身份时，沿用真实作者或项目认可的称呼。有公开依据且确由 Tangyixiao 作出的决定才归于 Tangyixiao。外部项目沿用其自身的维护者、品牌和致谢方式。示例中的链接、测试数量、版本、截图和维护者认可都应能追溯到本次工作的材料。
+
+## 自动化提交的联合署名
+
+在 Tangyixiao 的项目中，所有以 bot 身份写入仓库的 Git 提交都要保留 bot 为主作者，并使用下面这行联合署名。规则按提交行为适用，覆盖 Dependabot、Renovate、GitHub Apps、AI 编码 bot，以及通过 CI、定时任务或本地脚本提交的自动化。依赖升级、同步数据、更新文档、格式化代码和发版回写都适用。
+
+```text
+Co-authored-by: Tang Yixiao <115929632+tangyixiao@users.noreply.github.com>
+```
+
+在创建提交的位置设置 commit message，正文后空一行，再写 Git trailer。每位联合作者只列一次，保留已有签署行和其他贡献者。提交到其他人维护的仓库时，遵循接收项目的规则，按实际贡献署名。
+
+能配置 bot 提交消息时，在源头为每个提交添加署名。如果托管 bot 的原始提交消息不可配置，且项目允许 squash 合并，可在最终提交消息补齐署名，核实主作者仍是该 bot。核验记录应写清覆盖的是原始提交还是 squash 后落到目标分支的提交。对于只发评论、打标签或运行检查且没有创建提交的 bot，无需额外制造提交。
+
+Dependabot 的依赖更新可参考本仓库 PR #3：合并时使用 squash，最终提交的主作者是 `dependabot[bot]`，末尾保留了 bot 的 `Signed-off-by` 和 Tang Yixiao 的 `Co-authored-by`。准备 squash 时核对最终消息，避免合并工具丢掉署名。[PR #3 的最终提交](https://github.com/tangyixiao/tangyixiao-workflow/commit/13ed33d6d84d30180840f14e7e900c1ea2c7e1b1)
+
+推送或合并后，从目标分支取本次实际保留的每个 bot 提交 SHA，用 `git show -s --format="%an <%ae>" <sha>` 核对主作者，再用 `git show -s --format=%B <sha> | git interpret-trailers --parse` 检查上述署名是否恰好出现一次。[GitHub 联合署名说明](https://docs.github.com/en/pull-requests/how-tos/commit-changes/creating-a-commit-with-multiple-authors)

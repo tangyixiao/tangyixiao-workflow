@@ -54,6 +54,7 @@ every reference for a small request.
 | New website or substantial visual redesign | [Design](references/design.md) | Guidance; visual research and review use the available tools |
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
 | Repository operations, bots, labels, SEO, distribution | [Operations](references/operations.md) | Adoption/configuration checks; platform settings require separate verification |
+| Any bot that creates Git commits, regardless of host, runner or task | [Bot co-authorship](references/public-writing.md#自动化提交的联合署名) | Keep the bot as primary author and verify the project's co-author trailer on every bot commit that lands |
 | Product identity, version, channel, candidate assets, public notes | [Release](references/release.md) | Offline `release-check` and editorial `notes-check` |
 | Resource estimates and task closeout | [Resources](references/resources.md) | `doctor` reports host capacity. `finish` inspects registered scratch. |
 | Product demonstration or distribution video | [Video](references/video.md) | Guidance; no bundled recorder or renderer |
