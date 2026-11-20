@@ -45,6 +45,7 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Choose or change a product, repository, package, command, feature or code name | [Naming](references/naming.md) | Compare candidates where people will use them, check relevant namespaces and account for existing callers |
 | Choose a technology stack for any project or assess a migration | [Stack selection](references/development.md#选择技术栈) | Compare viable options against project evidence. Use the guide's optional evaluation or prototyping method when a decision is still open |
 | Write or resume a handoff for another maintainer, agent or device | [Handoff writing](references/handoff.md) | Use an available `handoff` for a short session brief, `session-handoff` for longer-running work, or the project's existing record for a durable transfer |
 | Changes that warrant an independent reviewer, disputed findings | [Independent review](references/independent-review.md) | Use a fresh reviewer and verify each finding against the actual revision and evidence |

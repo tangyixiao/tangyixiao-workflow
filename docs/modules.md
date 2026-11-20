@@ -7,6 +7,7 @@ the scope. Personal choices from a private conversation are not universal policy
 | Module | Local executable | Guided work / separately verified evidence |
 | --- | --- | --- |
 | Installation | `install`, `status`, `uninstall` | Client discovery and actual Skill invocation |
+| [Naming](../skills/tangyixiao-workflow/references/naming.md) | Skill guidance | Choose names using the project's vocabulary, target namespace and compatibility requirements |
 | [Technology stack selection](../skills/tangyixiao-workflow/references/development.md#选择技术栈) | Project guidance | Compare options against target platforms, resource limits and maintenance needs, then verify the choice with a representative task |
 | [Handoff writing](../skills/tangyixiao-workflow/references/handoff.md) | Skill guidance | Give the next maintainer or agent a starting revision, evidence, a first action and a way to verify the outcome |
 | [Public writing](../skills/tangyixiao-workflow/references/public-writing.md) | Available directly through the Skill in any repository | Apply the destination's conventions to README, About, Wiki, Actions output and other public contributions |
