@@ -55,7 +55,7 @@ Use the [planning guide](skills/tangyixiao-workflow/references/planning-and-deci
 
 ## Hand off work in progress
 
-When another maintainer or agent picks up the work, use the [handoff outline and worked example (Chinese)](skills/tangyixiao-workflow/references/handoff.md). Ask for the starting revision, what has been verified, the first action and how to tell when it succeeds.
+Use Matt Pocock’s `handoff` for a short brief between agents on the same machine. For work that spans sessions, `session-handoff` helps the next agent check what changed in Git. When a maintainer or another device needs the record, put the next action and its acceptance check in an issue or PR they can open. [Handoff guide and worked example (Chinese)](skills/tangyixiao-workflow/references/handoff.md)
 
 ## Adopt an existing project
 

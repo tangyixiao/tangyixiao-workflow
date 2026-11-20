@@ -44,7 +44,7 @@ node bin/pwf.mjs status --destination "$skillDir"
 
 ## 把工作交给下一位维护者
 
-换人、换 Agent 或换设备继续工作时，用[交接文档写作指南](skills/tangyixiao-workflow/references/handoff.md)。可以直接说「给下一位维护者写份交接：从哪里继续、哪些结果已经验证、第一步做什么、怎样算做完」。
+同机换 Agent 接一件明确的事，可以用 Matt Pocock 的 `handoff` 写短简报。长任务暂停、下次还要核对分支和未提交改动时，可以用 `session-handoff`。换设备或交给维护者时，把下一步和验收方法写进对方能打开的任务单或 PR。[交接方式、提纲和实例](skills/tangyixiao-workflow/references/handoff.md)
 
 ## 接入已有项目
 
