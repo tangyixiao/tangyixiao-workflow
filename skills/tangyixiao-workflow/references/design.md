@@ -4,6 +4,9 @@ Use for a new website, a new page on an existing site, or a substantial visual
 redesign. Additions and small fixes can follow an approved design without
 another concept approval cycle.
 
+For implementation choices, use the [project-wide stack selection guide](development.md#选择技术栈).
+A related site can reuse visual styles and assets across different frameworks.
+
 ## Establish a direction before implementation
 
 For a public homepage, first follow one visitor's path from arrival to a useful
