@@ -124,7 +124,7 @@ node bin/pwf.mjs resource-remove --project . --task build --path work/project-wo
 node bin/pwf.mjs resource-remove --project . --task build --path work/project-workflow/build/output.log --apply
 ```
 
-For repository handoff, use the [maintenance and publication checklist](../skills/tangyixiao-workflow/references/repository-stewardship.md).
+When someone else will continue the work, use the [handoff outline and worked example](../skills/tangyixiao-workflow/references/handoff.md). For changes that affect public entry points, use the [maintenance and publication checklist](../skills/tangyixiao-workflow/references/repository-stewardship.md).
 
 ## Upgrade or remove
 

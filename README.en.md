@@ -53,6 +53,10 @@ For drafting, checking claims, and verifying published text, see the [public wri
 
 Use the [planning guide](skills/tangyixiao-workflow/references/planning-and-decisions.md) to clarify a request or map work across milestones. At handoff, review affected pages using the [maintenance checklist](skills/tangyixiao-workflow/references/repository-stewardship.md). The [file and device guide](skills/tangyixiao-workflow/references/files-and-devices.md) covers publication choices and environment checks on another machine. These guides are in Chinese.
 
+## Hand off work in progress
+
+When another maintainer or agent picks up the work, use the [handoff outline and worked example (Chinese)](skills/tangyixiao-workflow/references/handoff.md). Ask for the starting revision, what has been verified, the first action and how to tell when it succeeds.
+
 ## Adopt an existing project
 
 Replace the project path and repository with real values. Choose the applicable
