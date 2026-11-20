@@ -48,7 +48,7 @@ every reference for a small request.
 | Choose a technology stack for any project or assess a migration | [Stack selection](references/development.md#选择技术栈) | Compare viable options against project evidence. Use the guide's optional evaluation or prototyping method when a decision is still open |
 | Write or resume a handoff for another maintainer, agent or device | [Handoff writing](references/handoff.md) | Use an available `handoff` for a short session brief, `session-handoff` for longer-running work, or the project's existing record for a durable transfer |
 | Changes that warrant an independent reviewer, disputed findings | [Independent review](references/independent-review.md) | Use a fresh reviewer and verify each finding against the actual revision and evidence |
-| Understand a request, write a phased plan, decide whether to ask | [Planning and decisions](references/planning-and-decisions.md) | Review existing evidence, resolve consequential decisions and report in plain language |
+| Clarify a request, test a plan, or decide whether to ask | [Planning and decisions](references/planning-and-decisions.md) | Resolve facts from the project first. For an underspecified implementation, select an available interview skill such as `grill-me` without requiring a second skill mention |
 | Maintain the repository, reach its audience, and check publication surfaces at handoff | [Repository stewardship](references/repository-stewardship.md) | Check actual branch, release and deployment state through the host |
 | Choose what to commit or disclose, or move work between devices | [Files and devices](references/files-and-devices.md) | Inspect the diff, rights, environment and transfer results |
 | Any text another person will see in a repository, its metadata, or an automation | [Public writing](references/public-writing.md) | Editorial workflow for drafting, review and publication within scope |
@@ -56,7 +56,7 @@ every reference for a small request.
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
 | Repository operations, bots, labels, SEO, distribution | [Operations](references/operations.md) | Adoption/configuration checks; platform settings require separate verification |
 | Any bot that creates Git commits, regardless of host, runner or task | [Bot co-authorship](references/public-writing.md#自动化提交的联合署名) | Keep the bot as primary author and verify the project's co-author trailer on every bot commit that lands |
-| Product identity, version, channel, candidate assets, public notes | [Release](references/release.md) | Offline `release-check` and editorial `notes-check` |
+| Publish an update, prepare a candidate, or write release notes | [Release](references/release.md#scope-a-release-update) | Identify the change range and delivery targets. Verify publication at each agreed destination; use `release-check` and `notes-check` for local checks |
 | Resource estimates and task closeout | [Resources](references/resources.md) | `doctor` reports host capacity. `finish` inspects registered scratch. |
 | Product demonstration or distribution video | [Video](references/video.md) | Guidance; no bundled recorder or renderer |
 
@@ -80,8 +80,10 @@ plan. Choose only applicable modules rather than filling every platform feature.
   historical products into one lineage because their repository now has a new name.
 - Use `finish --project` to inspect registered scratch. As part of closing the
   task, reconcile other owned paths and processes, verify what can be removed,
-  carry out routine cleanup using the host's supported operations, and check the
-  result. After a merge, check whether the task branch and worktree can retire.
+  move verified disposable files to the platform's Recycle Bin or Trash, and
+  verify recovery using the [platform cleanup guide](references/resources.md#recoverable-file-cleanup).
+  If recoverable trash is unavailable, retain the files and report their location.
+  After a merge, check whether the task branch and worktree can retire.
 
 ## Leave a usable result
 

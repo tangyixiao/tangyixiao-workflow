@@ -9,6 +9,34 @@ repository names. A repository may contain multiple independently versioned
 products. Historical releases keep their original product lineage; a later rename
 does not justify renaming every old product or moving old tags.
 
+## Scope a release update
+
+Start from the outcome the person expects: what changed, who needs the update,
+and where they should be able to use it. Infer the scope from the request,
+the project's release practice and the last delivery on that product line.
+For a routine update a sentence in the existing task record is enough. Ask
+only if a missing choice would change the audience, destination or authority.
+Use the [planning and decision guide](planning-and-decisions.md) to frame that
+question and continue any independent work.
+
+Describe changes from the previous published version on the same product and
+channel to the intended revision. For a site, use the previous deployed
+revision; for a first release, describe the starting contents. Include shared
+changes that affect this product. Keep this range consistent when writing the
+notes, preparing the artifact and reporting what shipped.
+
+Follow the established delivery route to the agreed outcome. A commit or green
+CI can be the endpoint of a request for that step. When the request is to
+publish, verify the version, artifact or behavior where people receive it,
+even when a push or CI job triggers delivery automatically. A full update
+covers all applicable, authorized destinations for this product and channel.
+
+Lead with what is usable now. If the registry package is available and a
+third-party catalog is still reviewing it, say exactly that. If the request
+also covers installation, check the actual environments in scope. Report the
+remaining step and its owner when a destination is pending. Use the project's
+own channels and vocabulary in the report.
+
 ## Offline candidate check
 
 Use the source/runtime `release-check --project PROJECT --candidate CANDIDATE.json`.

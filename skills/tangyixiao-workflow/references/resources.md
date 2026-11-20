@@ -68,8 +68,9 @@ work. Leave unrelated jobs under their owners' control.
    requires explicit scope covering those tasks. Age, size and directory names
    alone cannot establish ownership.
 4. **Release verified resources.** Stop unneeded task-owned servers, watchers and
-   children through the tool that started them. Remove verified disposable scratch
-   under the existing task authorization. Use the managing client's recoverable
+   children through the tool that started them. Send verified disposable files
+   and directories to the [platform trash](#recoverable-file-cleanup) under the
+   existing task authorization. Use the managing client's recoverable
    archive for managed worktrees where available. Preserve deliverables, useful
    source, selected designs and evidence, shared caches, dirty work and unique
    history. Honor host approval controls and any rejected operation.
@@ -79,6 +80,32 @@ work. Leave unrelated jobs under their owners' control.
    moving it on that volume may leave usage unchanged. Report remaining material
    scratch with its purpose, approximate size and the event that makes it
    removable.
+
+## Recoverable file cleanup
+
+For routine cleanup, use the current account's Recycle Bin or Trash. Pass one
+verified absolute path at a time after the ownership, link and active-consumer
+checks above. For a managed worktree, use the managing client's archive.
+
+| Platform | How to move and recover the item |
+| --- | --- |
+| Windows | Use File Explorer's Recycle Bin on a supported volume. In an interactive PowerShell session, use the `Microsoft.VisualBasic.FileIO.FileSystem` overload for the item type (`DeleteFile` or `DeleteDirectory`) with `RecycleOption.SendToRecycleBin` and `UICancelOption.ThrowException`. Cancel any prompt offering permanent deletion. In the Recycle Bin, match the item and original location before using Restore. [Windows file API](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualbasic.fileio.filesystem.deletefile) · [Directory API](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualbasic.fileio.filesystem.deletedirectory) |
+| Linux | Use the file manager's Move to Trash action, or an available `gio trash "$absolute_path"` for the verified path. Use `gio trash --list` or the file manager to match the original path and find the entry to restore. On a headless host, check support for the account and target filesystem before moving anything. [GIO manual](https://manpages.debian.org/trixie/libglib2.0-bin/gio.1.en.html) |
+| macOS | Use Finder's Move to Trash, or Foundation's `FileManager.trashItem(at:resultingItemURL:)` for the verified file URL. Use the returned URL to identify the item if macOS renames it. In Finder, select the matching item in Trash and use Put Back when available. [Foundation API](https://developer.apple.com/documentation/foundation/filemanager/trashitem%28at%3Aresultingitemurl%3A%29) |
+
+If the volume or session cannot provide recoverable trash (for example, some
+network shares, CI runners or containers), leave the item in place and record
+its path, size and reason for retention. If the operation fails or is rejected,
+inspect the source and recovery location before reporting its state. Honor the
+host's decision. Permanent removal requires separate authorization for the exact
+items. Never silently fall back to `Remove-Item` or `rm`, or empty a shared bin
+as part of task cleanup.
+
+Confirm that the original path is absent and the matching item is recoverable.
+Report it as moved to Trash. Claim freed disk space only after measuring the
+affected volume again.
+
+## Retire the ledger entry
 
 After an owned path is gone, preview retiring that specific ledger entry with
 `resource-remove --project PROJECT --task ID --path RELATIVE_PATH`. Add
