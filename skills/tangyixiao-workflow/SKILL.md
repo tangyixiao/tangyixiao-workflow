@@ -45,13 +45,14 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Choose a technology stack for any project or assess a migration | [Stack selection](references/development.md#选择技术栈) | Compare viable options against project evidence. Use the guide's optional evaluation or prototyping method when a decision is still open |
 | Write or resume a handoff for another maintainer, agent or device | [Handoff writing](references/handoff.md) | Use an available `handoff` for a short session brief, `session-handoff` for longer-running work, or the project's existing record for a durable transfer |
 | Changes that warrant an independent reviewer, disputed findings | [Independent review](references/independent-review.md) | Use a fresh reviewer and verify each finding against the actual revision and evidence |
 | Understand a request, write a phased plan, decide whether to ask | [Planning and decisions](references/planning-and-decisions.md) | Review existing evidence, resolve consequential decisions and report in plain language |
 | Maintain the repository, reach its audience, and check publication surfaces at handoff | [Repository stewardship](references/repository-stewardship.md) | Check actual branch, release and deployment state through the host |
 | Choose what to commit or disclose, or move work between devices | [Files and devices](references/files-and-devices.md) | Inspect the diff, rights, environment and transfer results |
 | Any text another person will see in a repository, its metadata, or an automation | [Public writing](references/public-writing.md) | Editorial workflow for drafting, review and publication within scope |
-| New website or substantial visual redesign | [Design](references/design.md) | Guidance; visual research and review use the available tools |
+| New website, page added to an existing site, or substantial visual redesign | [Design](references/design.md) | Reuse the design of related pages and sites. Review representative pages side by side and navigate between them |
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
 | Repository operations, bots, labels, SEO, distribution | [Operations](references/operations.md) | Adoption/configuration checks; platform settings require separate verification |
 | Any bot that creates Git commits, regardless of host, runner or task | [Bot co-authorship](references/public-writing.md#自动化提交的联合署名) | Keep the bot as primary author and verify the project's co-author trailer on every bot commit that lands |
