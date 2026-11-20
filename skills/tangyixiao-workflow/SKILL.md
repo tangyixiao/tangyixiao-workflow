@@ -54,6 +54,7 @@ every reference for a small request.
 | New website or substantial visual redesign | [Design](references/design.md) | Guidance; visual research and review use the available tools |
 | README, website content, translations, examples | [Documentation](references/documentation.md) | Guidance; project-specific validators remain separate |
 | Repository operations, bots, labels, SEO, distribution | [Operations](references/operations.md) | Adoption/configuration checks; platform settings require separate verification |
+| Actions or bots that write commits, including dependency PR merges | [Bot co-authorship](references/public-writing.md#自动化提交的联合署名) | Apply the project’s co-author trailer and verify it on the resulting commit |
 | Product identity, version, channel, candidate assets, public notes | [Release](references/release.md) | Offline `release-check` and editorial `notes-check` |
 | Resource estimates and task closeout | [Resources](references/resources.md) | `doctor` reports host capacity. `finish` inspects registered scratch. |
 | Product demonstration or distribution video | [Video](references/video.md) | Guidance; no bundled recorder or renderer |

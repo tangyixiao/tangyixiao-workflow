@@ -30,6 +30,18 @@
 
 ## 读者、身份与示例
 
+### 自动化提交的联合署名
+
+在 Tangyixiao 的项目中，为 GitHub Actions 或其他 bot 配置提交步骤时，保留实际 bot 的作者身份。Tang Yixiao 参与的自动更新，每个由工作流创建的提交都使用下面这行联合署名。将它放在 commit message 末尾的 Git trailer 段，与正文隔一空行。同一作者只列一次，已有的签署行和其他贡献者署名一并保留。向其他仓库贡献时，使用该项目约定和实际贡献者的身份。
+
+```text
+Co-authored-by: Tang Yixiao <115929632+tangyixiao@users.noreply.github.com>
+```
+
+Dependabot 的依赖更新可参考本仓库 PR #3：合并时使用 squash，最终提交的主作者是 `dependabot[bot]`，末尾保留了 bot 的 `Signed-off-by` 和 Tang Yixiao 的 `Co-authored-by`。准备 squash 时核对最终消息，避免合并工具丢掉署名。[PR #3 的最终提交](https://github.com/tangyixiao/tangyixiao-workflow/commit/13ed33d6d84d30180840f14e7e900c1ea2c7e1b1)
+
+推送或合并后，从目标分支取实际提交 SHA，用 `git show -s --format="%an <%ae>" <sha>` 核对主作者，再用 `git show -s --format=%B <sha> | git interpret-trailers --parse` 检查上述署名是否恰好出现一次。只测试、评论或部署的作业不会产生需要联合署名的仓库提交。[GitHub 联合署名说明](https://docs.github.com/en/pull-requests/how-tos/commit-changes/creating-a-commit-with-multiple-authors)
+
 软件用户、管理员、账号所有者是产品里的角色，可以直接写，例如“只有仓库管理员可以修改此设置”。避免把协作对话写进产品说明。假设差异只补充了 README 里的依赖说明，PR 标题可写“在快速开始中列出构建依赖”，正文说明新增哪项依赖、在哪一步需要它。评审者由此能直接对照差异。“按用户要求完善文档”略去了实际改动。
 
 贡献署名、决定出处、许可证或致谢需要指明身份时，沿用真实作者或项目认可的称呼。有公开依据且确由 Tangyixiao 作出的决定才归于 Tangyixiao。外部项目沿用其自身的维护者、品牌和致谢方式。示例中的链接、测试数量、版本、截图和维护者认可都应能追溯到本次工作的材料。
