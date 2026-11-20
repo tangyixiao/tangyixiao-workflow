@@ -11,43 +11,29 @@ does not justify renaming every old product or moving old tags.
 
 ## Scope a release update
 
-Interpret “publish an update” using the product's established delivery route.
-Before changing anything, read its release configuration, runbook, and last
-successful release on the requested channel. In the existing task or release
-record, state two things:
+Start from the outcome the person expects: what changed, who needs the update,
+and where they should be able to use it. Infer the scope from the request,
+the project's release practice and the last delivery on that product line.
+For a routine update a sentence in the existing task record is enough. Ask
+only if a missing choice would change the audience, destination or authority.
 
-1. **What ships.** Name the product or package, audience, stable or preview
-   channel, previous published version and target version or revision. Build
-   the change list from the previous published tag or deployment revision on
-   that product line through the candidate. In a multi-product repository,
-   include shared changes that affect the product. For a first release, say so
-   and identify the starting contents. A single PR or the latest commit can
-   omit changes made since the last release.
-2. **Where people will get it.** List the established destinations in scope
-   and what will prove each is ready. For “full release”, include every
-   applicable destination for that product and channel, including established
-   installation or activation targets covered by the request. If the product,
-   channel, or authority for a consequential destination is genuinely ambiguous,
-   ask about that specific gap. Continue the already-authorized steps.
+Describe changes from the previous published version on the same product and
+channel to the intended revision. For a site, use the previous deployed
+revision; for a first release, describe the starting contents. Include shared
+changes that affect this product. Keep this range consistent when writing the
+notes, preparing the artifact and reporting what shipped.
 
-Use the same completion rule each time. A commit identifies source, a merge
-lands it on the target branch, and green CI records checks on that revision.
-For a release request, continue through the authorized publishing steps and
-read back the version or artifact at the destination people actually use. If a
-push or a CI job triggers publication, verify its published result. A site may
-ship through deployment; a library may ship through a registry. A request
-limited to committing, merging, running CI, or preparing a release candidate
-ends at the named step.
+Follow the established delivery route to the agreed outcome. A commit or green
+CI can be the endpoint of a request for that step. When the request is to
+publish, verify the version, artifact or behavior where people receive it,
+even when a push or CI job triggers delivery automatically. A full update
+covers all applicable, authorized destinations for this product and channel.
 
-Report each in-scope destination with its version, observed state and evidence.
-For example, a plugin could be available from the registry and its GitHub
-Release, installed and exercised in Desktop, and still awaiting a Web runtime
-check or third-party catalog approval. Verify Desktop and Web independently
-when both are in scope. A submitted catalog PR or an accepted support request
-counts as submitted until the public listing resolves to the intended version.
-If an item is blocked, name the remaining action and who can take it. Lead the
-handoff with where the update can be used now; reserve “fully released” for the
-point when every agreed destination meets its acceptance condition.
+Lead with what is usable now. If the registry package is available and a
+third-party catalog is still reviewing it, say exactly that. If the request
+also covers installation, check the actual environments in scope. Report the
+remaining step and its owner when a destination is pending. Use the project's
+own channels and vocabulary in the report.
 
 ## Offline candidate check
 
