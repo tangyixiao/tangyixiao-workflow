@@ -80,8 +80,10 @@ plan. Choose only applicable modules rather than filling every platform feature.
   historical products into one lineage because their repository now has a new name.
 - Use `finish --project` to inspect registered scratch. As part of closing the
   task, reconcile other owned paths and processes, verify what can be removed,
-  carry out routine cleanup using the host's supported operations, and check the
-  result. After a merge, check whether the task branch and worktree can retire.
+  move verified disposable files to the platform's Recycle Bin or Trash, and
+  verify recovery using the [platform cleanup guide](references/resources.md#recoverable-file-cleanup).
+  If recoverable trash is unavailable, retain the files and report their location.
+  After a merge, check whether the task branch and worktree can retire.
 
 ## Leave a usable result
 
