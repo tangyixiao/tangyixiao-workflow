@@ -16,6 +16,8 @@ and where they should be able to use it. Infer the scope from the request,
 the project's release practice and the last delivery on that product line.
 For a routine update a sentence in the existing task record is enough. Ask
 only if a missing choice would change the audience, destination or authority.
+Use the [planning and decision guide](planning-and-decisions.md) to frame that
+question and continue any independent work.
 
 Describe changes from the previous published version on the same product and
 channel to the intended revision. For a site, use the previous deployed
