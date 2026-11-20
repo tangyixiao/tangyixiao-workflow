@@ -53,6 +53,10 @@ For drafting, checking claims, and verifying published text, see the [public wri
 
 Use the [planning guide](skills/tangyixiao-workflow/references/planning-and-decisions.md) to clarify a request or map work across milestones. At handoff, review affected pages using the [maintenance checklist](skills/tangyixiao-workflow/references/repository-stewardship.md). The [file and device guide](skills/tangyixiao-workflow/references/files-and-devices.md) covers publication choices and environment checks on another machine. These guides are in Chinese.
 
+## Hand off work in progress
+
+Use Matt Pocock’s `handoff` for a short brief between agents on the same machine. For work that spans sessions, `session-handoff` helps the next agent check what changed in Git. When a maintainer or another device needs the record, put the next action and its acceptance check in an issue or PR they can open. [Handoff guide and worked example (Chinese)](skills/tangyixiao-workflow/references/handoff.md)
+
 ## Adopt an existing project
 
 Replace the project path and repository with real values. Choose the applicable

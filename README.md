@@ -42,6 +42,10 @@ node bin/pwf.mjs status --destination "$skillDir"
 
 需求不清或项目要跨阶段推进时，可参照[需求、计划与决策指南](skills/tangyixiao-workflow/references/planning-and-decisions.md)。交付前用[仓库维护清单](skills/tangyixiao-workflow/references/repository-stewardship.md)检查哪些入口需要更新。准备公开文件或换设备时，先看[文件去向与跨设备环境](skills/tangyixiao-workflow/references/files-and-devices.md)。
 
+## 把工作交给下一位维护者
+
+同机换 Agent 接一件明确的事，可以用 Matt Pocock 的 `handoff` 写短简报。长任务暂停、下次还要核对分支和未提交改动时，可以用 `session-handoff`。换设备或交给维护者时，把下一步和验收方法写进对方能打开的任务单或 PR。[交接方式、提纲和实例](skills/tangyixiao-workflow/references/handoff.md)
+
 ## 接入已有项目
 
 把项目路径、仓库名和类型换成真实值；`npm`、`static`、`generic` 只选适用的一种。

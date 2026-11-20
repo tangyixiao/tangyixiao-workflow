@@ -7,6 +7,7 @@ the scope. Personal choices from a private conversation are not universal policy
 | Module | Local executable | Guided work / separately verified evidence |
 | --- | --- | --- |
 | Installation | `install`, `status`, `uninstall` | Client discovery and actual Skill invocation |
+| [Handoff writing](../skills/tangyixiao-workflow/references/handoff.md) | Skill guidance | Give the next maintainer or agent a starting revision, evidence, a first action and a way to verify the outcome |
 | [Public writing](../skills/tangyixiao-workflow/references/public-writing.md) | Available directly through the Skill in any repository | Apply the destination's conventions to README, About, Wiki, Actions output and other public contributions |
 | [Planning and decisions](../skills/tangyixiao-workflow/references/planning-and-decisions.md) | Project guidance | Identify a concrete need, plan verifiable milestones, and ask only for decisions that affect delivery |
 | [Repository maintenance](../skills/tangyixiao-workflow/references/repository-stewardship.md) | Project guidance | Review public entry points, discoverability, ownership, and publication state |

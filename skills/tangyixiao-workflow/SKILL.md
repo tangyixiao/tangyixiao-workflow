@@ -1,6 +1,6 @@
 ---
 name: tangyixiao-workflow
-description: Draft public repository writing, discover requirements, plan short and long-term work, review Git visibility and cross-device setup, and check project delivery. Covers README, About, Wiki, PRs, releases, Pages, branches, resource estimates and cleanup.
+description: Write repository documentation and handoffs for people or agents, discover requirements, plan work, review Git visibility and cross-device setup, and check project delivery. Covers README, About, Wiki, PRs, releases, Pages, branches, resource estimates and cleanup.
 ---
 
 # Tangyixiao Workflow
@@ -21,7 +21,7 @@ with available capacity before starting it.
 
 ## Locate the executable
 
-For a writing task, start with the [public writing guide](references/public-writing.md).
+For public repository text, start with the [public writing guide](references/public-writing.md).
 It applies in personal repositories, forks and upstream projects, including
 projects with no toolkit configuration. Follow the destination's language,
 templates and contribution rules. Use the CLI when the task calls for a check.
@@ -45,6 +45,7 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Write or resume a handoff for another maintainer, agent or device | [Handoff writing](references/handoff.md) | Use an available `handoff` for a short session brief, `session-handoff` for longer-running work, or the project's existing record for a durable transfer |
 | Changes that warrant an independent reviewer, disputed findings | [Independent review](references/independent-review.md) | Use a fresh reviewer and verify each finding against the actual revision and evidence |
 | Understand a request, write a phased plan, decide whether to ask | [Planning and decisions](references/planning-and-decisions.md) | Review existing evidence, resolve consequential decisions and report in plain language |
 | Maintain the repository, reach its audience, and check publication surfaces at handoff | [Repository stewardship](references/repository-stewardship.md) | Check actual branch, release and deployment state through the host |
