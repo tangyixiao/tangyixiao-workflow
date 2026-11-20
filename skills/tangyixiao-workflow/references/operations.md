@@ -9,10 +9,11 @@ For About metadata, Wiki navigation, workflow names, check summaries and bot
 comments, use the [public writing guide](public-writing.md). The existing
 repository determines the publishing surface and local conventions.
 
-When adding or updating an Action that writes commits, follow the
+For every bot that writes Git commits, follow the
 [bot co-authorship guidance](public-writing.md#自动化提交的联合署名) at the step
-that creates the commit. For a dependency PR, verify the author and trailers
-on the commit that reaches the default branch.
+that creates the commit. This also covers hosted apps, coding agents using a
+bot identity, and scheduled or local automation. After a push or merge, check
+the author and trailers on each bot commit that landed on the target branch.
 
 Inspect the repository's real stack and existing automation before proposing a
 baseline. GitHub's account-level `.github` community defaults do not automatically
