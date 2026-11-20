@@ -1,7 +1,8 @@
 # Design mode
 
-Use for a new website or substantial visual redesign. Keep small fixes within an
-already approved direction moving without another concept approval cycle.
+Use for a new website, a new page on an existing site, or a substantial visual
+redesign. Additions and small fixes can follow an approved design without
+another concept approval cycle.
 
 ## Establish a direction before implementation
 
@@ -22,6 +23,30 @@ visual voice. Rauno Freiberg explains why a consistent grid helped readers
 follow page transitions and how the team studied several widths.
 [Entertainment Weekly case study](https://v3.danmall.com/articles/responsive-mobile-entertainment-weekly/) ·
 [Vercel homepage case study](https://rauno.me/craft/vercel)
+
+## Keep related pages and sites recognizable
+
+Start with an approved page from the same product or brand. Identify what
+visitors should recognize as they move between the homepage, feature pages,
+documentation and related sites. Reuse the existing header and footer, logo
+and product name, navigation order and active state, and the placement and
+behavior of language and theme controls. Align page content to the same grid
+and spacing scale. Carry heading levels, color roles in both themes, icons
+and shared controls through the journey. Prefer the project's shared layouts,
+components and styles when implementing these elements.
+
+Let the body layout serve the task. A homepage can have a bold introduction,
+a tool can use two panes and a guide can have a narrow reading column. When a
+visitor goes from the homepage to Features, the logo, navigation alignment and
+selected theme should still be familiar. Give each language the typography and
+wrapping it needs within that shared hierarchy.
+
+Include a representative inner page beside the homepage in the design overview.
+For a connected site, include the page visitors land on there. During review,
+follow the link and compare those pages at the same viewport, language and
+theme. Check the transition on desktop and mobile and in both supported themes.
+If navigation shifts, the brand changes or a shared control disappears, trace
+the difference to the shared layout or record the task-specific reason for it.
 
 ## Localize the composition
 
