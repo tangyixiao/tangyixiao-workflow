@@ -50,6 +50,7 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Discover, screen, install or update a supporting skill; choose a media tool | [Skill screening and selection](references/skill-selection.md) | Check the publisher, pinned artifact, permissions and scan results; compare a representative task with the existing approach before deciding retention |
 | Set acceptance criteria; update a skill, plugin, or this workflow itself | [Acceptance and updates](references/acceptance-and-updates.md) | Verify the requested outcome at the receiving host. For this Skill use source-side `install` and read back the installed receipt |
 | Choose or change a product, repository, package, command, feature or code name | [Naming](references/naming.md) | Compare candidates where people will use them, check relevant namespaces and account for existing callers |
 | Choose a technology stack for any project or assess a migration | [Stack selection](references/development.md#选择技术栈) | Compare viable options against project evidence. Use the guide's optional evaluation or prototyping method when a decision is still open |
