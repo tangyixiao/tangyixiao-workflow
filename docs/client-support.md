@@ -18,9 +18,11 @@ their configuration, change providers/authentication, or install another runtime
 Presence of a client's skills directory is not evidence that the client itself is
 installed or that an active session loaded this Skill.
 
-For Codex, inspect installation with `status --destination ...`, let the client
-rediscover Skills through its supported mechanism, and make a new explicit
-`$tangyixiao-workflow` invocation against a bounded local project. Check the actual
+For Codex, inspect installation with `status --destination ...` and let the
+client rediscover Skills. The Skill allows implicit invocation for relevant
+project work. Test that default in a fresh session with a representative
+project request that omits the Skill name. An explicit `$tangyixiao-workflow`
+invocation tests the named route separately. Check the actual
 tool result and changed paths. A shell command or `doctor` result alone cannot
 prove UI discovery or model behavior. Record the tested client/version and the
 actual observed stage in delivery evidence, not a permanent universal badge.
