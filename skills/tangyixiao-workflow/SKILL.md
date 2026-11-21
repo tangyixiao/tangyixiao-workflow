@@ -19,8 +19,9 @@ Before building a tool or feature, find the implementation this project already
 uses. Check existing issues, PRs, dependencies, standard tools and maintained
 upstream options as appropriate. Use or adapt a suitable one. For a custom
 implementation, record the specific gap in the existing issue, PR or task note.
-Use [development guidance](references/development.md) to choose the branch,
-base, name and post-merge disposition. For a heavy job, use the
+Use [development guidance](references/development.md) to choose the branch
+and its post-merge disposition, and to place validation where a specific input,
+contract or failure mode calls for it. For a heavy job, use the
 [resource guide](references/resources.md) to compare estimated peak demand
 with available capacity before starting it.
 
