@@ -1,6 +1,6 @@
 ---
 name: tangyixiao-workflow
-description: Write repository documentation and handoffs for people or agents, discover requirements, plan work, review Git visibility and cross-device setup, and check project delivery. Covers README, About, Wiki, PRs, releases, Pages, branches, resource estimates and cleanup.
+description: Default workflow for software project work, from requirements and acceptance criteria to implementation, verification and handoff. Use for repository writing, releases, and updates to skills, plugins or Tangyixiao Workflow itself.
 ---
 
 # Tangyixiao Workflow
@@ -9,6 +9,11 @@ Use this skill to turn a project workflow into a scoped plan, useful changes, an
 evidence of the result. Preserve the receiving project's identity, existing work,
 license, and explicit instructions. A sample project is not the identity of every
 project that adopts it.
+
+Use this workflow by default for relevant project tasks without waiting for its
+name in the prompt. Establish the observable acceptance condition, consult the
+matching reference, and check the result through the intended entry point.
+Keep routine work lightweight and respect a request to skip or narrow the workflow.
 
 Before building a tool or feature, find the implementation this project already
 uses. Check existing issues, PRs, dependencies, standard tools and maintained
@@ -45,6 +50,7 @@ every reference for a small request.
 
 | Task | Reference | Executable support in this version |
 | --- | --- | --- |
+| Set acceptance criteria; update a skill, plugin, or this workflow itself | [Acceptance and updates](references/acceptance-and-updates.md) | Verify the requested outcome at the receiving host. For this Skill use source-side `install` and read back the installed receipt |
 | Choose or change a product, repository, package, command, feature or code name | [Naming](references/naming.md) | Compare candidates where people will use them, check relevant namespaces and account for existing callers |
 | Choose a technology stack for any project or assess a migration | [Stack selection](references/development.md#选择技术栈) | Compare viable options against project evidence. Use the guide's optional evaluation or prototyping method when a decision is still open |
 | Write or resume a handoff for another maintainer, agent or device | [Handoff writing](references/handoff.md) | Use an available `handoff` for a short session brief, `session-handoff` for longer-running work, or the project's existing record for a durable transfer |
